@@ -1,0 +1,217 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  AGENT
+  ADMIN
+}
+
+enum PropertyType {
+  APARTMENT
+  VILLA
+  STUDIO
+  PLOT
+  PENTHOUSE
+}
+
+enum ListingType {
+  BUY
+  RENT
+}
+
+enum Furnishing {
+  FURNISHED
+  SEMI_FURNISHED
+  UNFURNISHED
+}
+
+enum PropertyStatus {
+  DRAFT
+  PENDING_REVIEW
+  APPROVED
+  REJECTED
+}
+
+enum InquiryStatus {
+  NEW
+  CONTACTED
+  VISIT_SCHEDULED
+  CLOSED
+}
+
+enum ConsultationPurpose {
+  BUY
+  SELL
+}
+
+enum ConsultationStatus {
+  REQUESTED
+  PAYMENT_PENDING
+  BOOKED
+  COMPLETED
+  REFUNDED
+  CANCELLED
+}
+
+model User {
+  id              String          @id @default(cuid())
+  name            String?
+  email           String?         @unique
+  emailVerified   DateTime?
+  image           String?
+  passwordHash    String?
+  phone           String?
+  role            Role            @default(USER)
+  accounts        Account[]
+  sessions        Session[]
+  agentProfile    Agent?
+  properties      Property[]      @relation("OwnerProperties")
+  inquiries       Inquiry[]
+  savedProperties SavedProperty[]
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+}
+
+model Consultation {
+  id            String              @id @default(cuid())
+  purpose       ConsultationPurpose
+  name          String
+  phone         String
+  email         String
+  district      String
+  address       String
+  preferredDate DateTime
+  tokenAmount   Decimal             @default(1100) @db.Decimal(10, 2)
+  status        ConsultationStatus  @default(REQUESTED)
+  createdAt     DateTime            @default(now())
+  updatedAt     DateTime            @updatedAt
+
+  @@index([status, preferredDate])
+  @@index([email])
+}
+
+model Agent {
+  id         String     @id @default(cuid())
+  userId     String     @unique
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  licenseNo  String?
+  bio        String?
+  agencyName String?
+  rating     Float      @default(4.8)
+  properties Property[]
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+}
+
+model Property {
+  id          String          @id @default(cuid())
+  ownerId     String?
+  owner       User?           @relation("OwnerProperties", fields: [ownerId], references: [id], onDelete: SetNull)
+  agentId     String?
+  agent       Agent?          @relation(fields: [agentId], references: [id], onDelete: SetNull)
+  title       String
+  slug        String          @unique
+  description String
+  city        String
+  locality    String
+  address     String?
+  latitude    Float?
+  longitude   Float?
+  type        PropertyType
+  listingType ListingType
+  price       Decimal         @db.Decimal(14, 2)
+  bedrooms    Int
+  bathrooms   Int
+  areaSqFt    Int
+  furnished   Furnishing
+  amenities   String[]        @default([])
+  status      PropertyStatus  @default(DRAFT)
+  isFeatured  Boolean         @default(false)
+  images      PropertyImage[]
+  inquiries   Inquiry[]
+  savedBy     SavedProperty[]
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  @@index([city, locality])
+  @@index([type, listingType, status])
+  @@index([price])
+}
+
+model PropertyImage {
+  id         String   @id @default(cuid())
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  url        String
+  alt        String?
+  sortOrder  Int      @default(0)
+  createdAt  DateTime @default(now())
+}
+
+model Inquiry {
+  id          String        @id @default(cuid())
+  propertyId  String
+  property    Property      @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  userId      String?
+  user        User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
+  name        String
+  email       String
+  phone       String
+  message     String?
+  visitAt     DateTime?
+  status      InquiryStatus @default(NEW)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+model SavedProperty {
+  id         String   @id @default(cuid())
+  userId     String
+  propertyId String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  createdAt  DateTime @default(now())
+
+  @@unique([userId, propertyId])
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
