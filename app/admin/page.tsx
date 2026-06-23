@@ -88,7 +88,7 @@ export default async function AdminPage() {
                       <td className="px-5 py-4"><p className="font-bold text-navy">{lead.name}</p><p>{lead.email}</p><p>{lead.phone}</p></td>
                       <td className="px-5 py-4"><p>{lead.city}</p><p className="max-w-[220px] text-slate-500">{lead.address || "Address not provided"}</p></td>
                       <td className="px-5 py-4"><span className="bg-green-50 px-3 py-1 text-xs font-bold text-green-700">{lead.status.replace("_", " ")}</span></td>
-                      <td className="px-5 py-4"><details><summary className="cursor-pointer font-bold text-green-700">View full details</summary><pre className="mt-3 max-w-sm whitespace-pre-wrap bg-slate-50 p-3 text-xs text-slate-600">{JSON.stringify(lead.details, null, 2)}</pre></details></td>
+                      <td className="px-5 py-4"><details><summary className="cursor-pointer font-bold text-green-700">View full details and images</summary><pre className="mt-3 max-w-sm whitespace-pre-wrap bg-slate-50 p-3 text-xs text-slate-600">{JSON.stringify(lead.details, null, 2)}</pre><div className="mt-3 grid max-w-sm grid-cols-2 gap-2">{lead.images.map((image) => <a key={image} href={image} target="_blank" rel="noreferrer"><img src={image} alt="Submitted property" className="aspect-video w-full object-cover" /></a>)}</div></details></td>
                     </tr>
                   ))}
                 </tbody>

@@ -1,0 +1,1 @@
+ALTER TABLE "SellerServiceLead" ADD COLUMN "images" TEXT[] NOT NULL DEFAULT ARRAY[]::TEXT[];

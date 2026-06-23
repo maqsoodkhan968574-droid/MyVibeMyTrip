@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { Building2, CheckCircle2, Home, UserRoundCheck } from "lucide-react";
+import { Building2, CheckCircle2, Home, ImagePlus, UserRoundCheck, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 type ServiceType = "DEVELOPER" | "BROKER" | "OWNER";
@@ -38,29 +38,63 @@ export function SellerServiceForm({ serviceType }: { serviceType: ServiceType })
   const Icon = content.icon;
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [images, setImages] = useState<File[]>([]);
+
+  function addImages(files: FileList | null) {
+    if (!files) return;
+    const selected = Array.from(files).filter((file) => file.type.startsWith("image/"));
+    const nextImages = [...images, ...selected].slice(0, 10);
+    setImages(nextImages);
+    if (selected.length + images.length > 10) setMessage("You can add a maximum of 10 images.");
+  }
+
+  async function uploadImages() {
+    const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+    const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
+    if (!cloudName || !uploadPreset) throw new Error("Photo uploads are not configured yet.");
+    return Promise.all(images.map(async (image) => {
+      const upload = new FormData();
+      upload.append("file", image);
+      upload.append("upload_preset", uploadPreset);
+      const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, { method: "POST", body: upload });
+      const result = await response.json() as { secure_url?: string };
+      if (!response.ok || !result.secure_url) throw new Error("One or more images could not be uploaded.");
+      return result.secure_url;
+    }));
+  }
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsSubmitting(true);
     setMessage("");
+    if (images.length === 0) {
+      setMessage("Please add at least one property image.");
+      setIsSubmitting(false);
+      return;
+    }
     const form = new FormData(event.currentTarget);
     const optional = (name: string) => String(form.get(name) ?? "").trim() || undefined;
-    const payload = {
+    try {
+      const imageUrls = await uploadImages();
+      const payload = {
       serviceType,
       name: form.get("name"), companyName: optional("companyName"), email: form.get("email"), phone: form.get("phone"), city: form.get("city"), address: optional("address"),
+      images: imageUrls,
       details: {
         title: form.get("title"), propertyType: form.get("propertyType"), listingType: form.get("listingType"), price: form.get("price"), locality: form.get("locality"),
         description: form.get("description"), inventory: optional("inventory"), website: optional("website")
       }
     };
-    const response = await fetch("/api/seller-leads", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
-    setIsSubmitting(false);
-    if (!response.ok) {
-      setMessage("We could not submit this form. Please check the required fields and try again.");
-      return;
+      const response = await fetch("/api/seller-leads", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+      if (!response.ok) throw new Error("We could not submit this form. Please check the required fields and try again.");
+      event.currentTarget.reset();
+      setImages([]);
+      setMessage("Submitted successfully. Our Rivanta team will review your details and contact you shortly.");
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "We could not submit this form. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
-    event.currentTarget.reset();
-    setMessage("Submitted successfully. Our Rivanta team will review your details and contact you shortly.");
   }
 
   return (
@@ -90,6 +124,11 @@ export function SellerServiceForm({ serviceType }: { serviceType: ServiceType })
             </div>
             <label className="mt-4 grid gap-2 text-sm font-bold text-slate-700">Full address (optional)<textarea name="address" rows={3} className="border border-slate-200 px-3 py-3 outline-none focus:border-green-600" /></label>
             <label className="mt-4 grid gap-2 text-sm font-bold text-slate-700">Description and key details<textarea name="description" required rows={6} className="border border-slate-200 px-3 py-3 outline-none focus:border-green-600" placeholder="Share configuration, amenities, possession timeline, or any information buyers should know." /></label>
+            <div className="mt-5 border border-dashed border-green-500 bg-green-50 p-5">
+              <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center"><div><p className="font-black text-navy">Property images</p><p className="mt-1 text-sm text-slate-600">Add up to 10 clear images. At least one image is required.</p></div><label className="inline-flex w-fit cursor-pointer items-center gap-2 bg-navy px-4 py-2 text-sm font-bold text-white"><ImagePlus size={18} /> Add images<input className="sr-only" type="file" accept="image/*" multiple onChange={(event) => { addImages(event.target.files); event.currentTarget.value = ""; }} /></label></div>
+              {images.length > 0 && <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-5">{images.map((image, index) => <div key={`${image.name}-${index}`} className="relative aspect-square overflow-hidden bg-slate-200"><img src={URL.createObjectURL(image)} alt={`Selected property image ${index + 1}`} className="h-full w-full object-cover" /><button type="button" aria-label={`Remove image ${index + 1}`} onClick={() => setImages(images.filter((_, imageIndex) => imageIndex !== index))} className="absolute right-1 top-1 grid h-7 w-7 place-items-center bg-navy text-white"><X size={15} /></button></div>)}</div>}
+              <p className="mt-3 text-xs font-bold text-green-700">{images.length}/10 images selected</p>
+            </div>
             {message && <p className={`mt-5 text-sm font-semibold ${message.startsWith("Submitted") ? "text-green-700" : "text-red-600"}`}>{message}</p>}
             <Button type="submit" className="mt-6" disabled={isSubmitting}>{isSubmitting ? "Submitting..." : "Submit for Rivanta review"}</Button>
           </form>

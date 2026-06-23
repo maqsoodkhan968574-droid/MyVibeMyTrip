@@ -10,6 +10,7 @@ const leadSchema = z.object({
   phone: z.string().min(8).max(20),
   city: z.string().min(2),
   address: z.string().max(500).optional(),
+  images: z.array(z.string().url()).min(1).max(10),
   details: z.object({
     title: z.string().min(2).max(160),
     propertyType: z.string().min(2).max(60),
