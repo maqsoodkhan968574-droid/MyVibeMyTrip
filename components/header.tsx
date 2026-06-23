@@ -1,5 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Building2, Heart, UserCircle } from "lucide-react";
+import { Heart, UserCircle } from "lucide-react";
 import { MobileNavigation } from "@/components/mobile-navigation";
 
 const links = [
@@ -17,9 +18,7 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-slate-100 bg-white/95 backdrop-blur">
       <div className="container-shell flex h-16 items-center justify-between gap-4">
         <Link href="/" className="flex items-center gap-2 font-bold tracking-tight text-navy">
-          <span className="grid h-9 w-9 place-items-center rounded-lg bg-navy text-brand">
-            <Building2 size={20} />
-          </span>
+          <Image src="/brand/rivanta-mark.png" alt="Rivanta Realty" width={38} height={43} className="h-10 w-9 object-contain" priority />
           <span className="text-lg">Rivanta Realty</span>
         </Link>
         <nav className="hidden items-center gap-5 lg:flex">

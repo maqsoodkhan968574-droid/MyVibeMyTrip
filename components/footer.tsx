@@ -1,14 +1,13 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Building2, Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 
 export function Footer() {
   return (
     <footer className="mt-12 bg-navy text-white sm:mt-20">
       <div className="container-shell grid gap-10 py-12 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
         <div>
-          <div className="mb-4 flex items-center gap-2 text-xl font-bold">
-            <Building2 className="text-brand" /> Rivanta Realty
-          </div>
+          <Image src="/brand/rivanta-realty-wordmark.png" alt="Rivanta Realty" width={205} height={149} className="mb-4 h-auto w-40 bg-white p-1 sm:w-48" />
           <p className="max-w-sm text-sm leading-6 text-slate-300">
             Building Trust, Creating Homes. Premium homes, verified agents, and a smoother path from discovery to deal.
           </p>
