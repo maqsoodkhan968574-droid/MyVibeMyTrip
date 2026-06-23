@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Clock3, Quote, ShieldCheck, Sparkles, TrendingUp } from "lucide-react";
+import { ArrowRight, Building2, CheckCircle2, Clock3, Home, Landmark, Quote, ShieldCheck, Sparkles, TrendingUp, UserRoundCheck } from "lucide-react";
 import { ConsultationForm } from "@/components/consultation/consultation-form";
+import { FinanceTools } from "@/components/finance-tools";
 import { Footer } from "@/components/footer";
 import { PropertyCard } from "@/components/property-card";
 import { SearchPanel } from "@/components/search-panel";
@@ -114,6 +115,76 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section id="updates" className="container-shell py-16">
+        <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-green-700">News and live updates</p>
+            <h2 className="mt-2 text-3xl font-black text-navy">Stay close to the market</h2>
+          </div>
+          <Link href="/properties" className="inline-flex items-center gap-2 text-sm font-bold text-green-700">Explore live listings <ArrowRight size={16} /></Link>
+        </div>
+        <div className="grid gap-5 md:grid-cols-3">
+          {[
+            ["Market watch", "Buyer demand is rising for ready-to-move premium homes in well-connected neighbourhoods.", "Updated today"],
+            ["Seller insight", "A verified listing with professional photos and a clear price attracts more serious enquiries.", "Seller guide"],
+            ["Local pulse", "Track new listings, price movement, and high-interest localities before your next property decision.", "Live intelligence"]
+          ].map(([label, copy, meta]) => (
+            <article key={label} className="border-l-4 border-green-500 bg-slate-50 p-6">
+              <p className="text-sm font-bold text-green-700">{meta}</p>
+              <h3 className="mt-3 text-xl font-black text-navy">{label}</h3>
+              <p className="mt-3 text-sm leading-6 text-slate-600">{copy}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="seller-services" className="bg-navy py-16 text-white">
+        <div className="container-shell">
+          <div className="max-w-2xl">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-brand">Seller services</p>
+            <h2 className="mt-2 text-3xl font-black">A stronger route to the right buyer</h2>
+            <p className="mt-4 leading-7 text-slate-300">Choose the service that matches how you sell. Every route is supported by verified enquiries and local market guidance.</p>
+          </div>
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            {[
+              [Building2, "For developers", "Launch projects with qualified leads, inventory visibility, and market-ready campaigns."],
+              [UserRoundCheck, "For brokers", "Manage listings, strengthen your local reach, and respond to serious prospects faster."],
+              [Home, "For owners", "List your home with expert support, pricing guidance, and a clear verification journey."]
+            ].map(([Icon, title, copy]) => {
+              const ServiceIcon = Icon as typeof Building2;
+              return (
+                <article key={title as string} className="border border-white/15 bg-white/5 p-6">
+                  <ServiceIcon className="text-brand" size={28} />
+                  <h3 className="mt-5 text-xl font-black">{title as string}</h3>
+                  <p className="mt-3 text-sm leading-6 text-slate-300">{copy as string}</p>
+                  <Link href="/sell" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand">Get started <ArrowRight size={16} /></Link>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section id="services" className="bg-slate-50 py-16">
+        <div className="container-shell grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-green-700">Services and tools</p>
+            <h2 className="mt-2 text-3xl font-black text-navy">Plan your property move with clarity</h2>
+            <div className="mt-7 grid gap-4">
+              <article className="flex gap-4 border-b border-slate-200 pb-5">
+                <span className="grid h-11 w-11 shrink-0 place-items-center bg-green-100 text-green-700"><Landmark size={21} /></span>
+                <div><h3 className="font-black text-navy">Home loan support</h3><p className="mt-1 text-sm leading-6 text-slate-600">Understand your affordability and begin your financing journey with confidence.</p></div>
+              </article>
+              <article className="flex gap-4">
+                <span className="grid h-11 w-11 shrink-0 place-items-center bg-navy text-brand"><Building2 size={21} /></span>
+                <div><h3 className="font-black text-navy">Rivanta Realty assistance</h3><p className="mt-1 text-sm leading-6 text-slate-600">One team for property search, seller strategy, verified visits, and negotiations.</p></div>
+              </article>
+            </div>
+          </div>
+          <FinanceTools />
+        </div>
+      </section>
+
       <section className="container-shell grid gap-12 py-16 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
         <div>
           <p className="text-sm font-bold uppercase tracking-[0.2em] text-green-700">Agents</p>
@@ -162,6 +233,14 @@ export default function HomePage() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="bg-green-600 py-14 text-white">
+        <div className="container-shell text-center">
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-green-100">Built in Bihar, for India</p>
+          <h2 className="mx-auto mt-3 max-w-4xl text-3xl font-black leading-tight sm:text-4xl">Building trust, creating homes, and opening bigger possibilities for every property dream.</h2>
+          <p className="mx-auto mt-4 max-w-2xl leading-7 text-green-50">Rivanta Realty is proudly developed by a young entrepreneur from Bihar, with a belief that honest guidance can move India forward.</p>
         </div>
       </section>
 
