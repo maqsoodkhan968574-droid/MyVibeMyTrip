@@ -1,5 +1,6 @@
 import { BarChart3, Building2, CheckCircle2, Users, XCircle } from "lucide-react";
 import { properties } from "@/lib/property-data";
+import { prisma } from "@/lib/prisma";
 
 const cards = [
   { label: "Users", value: "8,420", icon: Users },
@@ -8,7 +9,12 @@ const cards = [
   { label: "Rejected", value: "18", icon: XCircle }
 ];
 
-export default function AdminPage() {
+export default async function AdminPage() {
+  const sellerLeads = await prisma.sellerServiceLead.findMany({
+    orderBy: { createdAt: "desc" },
+    take: 20
+  }).catch(() => []);
+
   return (
     <main className="bg-slate-50 py-10">
       <div className="container-shell">
@@ -63,6 +69,32 @@ export default function AdminPage() {
               </tbody>
             </table>
           </div>
+        </section>
+        <section className="mt-8 rounded-lg border border-slate-200 bg-white shadow-sm">
+          <div className="flex flex-col justify-between gap-2 border-b border-slate-200 p-5 sm:flex-row sm:items-center">
+            <div><h2 className="font-black text-navy">Developer, broker, and owner submissions</h2><p className="mt-1 text-sm text-slate-500">New seller-service requests submitted through Rivanta Realty.</p></div>
+            <span className="text-sm font-bold text-green-700">{sellerLeads.length} recent requests</span>
+          </div>
+          {sellerLeads.length === 0 ? (
+            <p className="p-5 text-sm text-slate-500">No seller-service submissions have arrived yet.</p>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[900px] text-left text-sm">
+                <thead className="bg-slate-50 text-slate-500"><tr><th className="px-5 py-3">Service</th><th className="px-5 py-3">Contact</th><th className="px-5 py-3">Location</th><th className="px-5 py-3">Status</th><th className="px-5 py-3">Submitted details</th></tr></thead>
+                <tbody>
+                  {sellerLeads.map((lead) => (
+                    <tr key={lead.id} className="border-t border-slate-100 align-top">
+                      <td className="px-5 py-4 font-bold text-navy">{lead.serviceType.toLowerCase()}</td>
+                      <td className="px-5 py-4"><p className="font-bold text-navy">{lead.name}</p><p>{lead.email}</p><p>{lead.phone}</p></td>
+                      <td className="px-5 py-4"><p>{lead.city}</p><p className="max-w-[220px] text-slate-500">{lead.address || "Address not provided"}</p></td>
+                      <td className="px-5 py-4"><span className="bg-green-50 px-3 py-1 text-xs font-bold text-green-700">{lead.status.replace("_", " ")}</span></td>
+                      <td className="px-5 py-4"><details><summary className="cursor-pointer font-bold text-green-700">View full details</summary><pre className="mt-3 max-w-sm whitespace-pre-wrap bg-slate-50 p-3 text-xs text-slate-600">{JSON.stringify(lead.details, null, 2)}</pre></details></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </section>
       </div>
     </main>

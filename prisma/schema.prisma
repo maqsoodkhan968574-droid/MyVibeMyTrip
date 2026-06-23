@@ -60,6 +60,20 @@ enum ConsultationStatus {
   CANCELLED
 }
 
+enum SellerServiceType {
+  DEVELOPER
+  BROKER
+  OWNER
+}
+
+enum SellerServiceStatus {
+  NEW
+  CONTACTED
+  IN_REVIEW
+  APPROVED
+  CLOSED
+}
+
 model User {
   id              String          @id @default(cuid())
   name            String?
@@ -95,6 +109,24 @@ model Consultation {
 
   @@index([status, preferredDate])
   @@index([email])
+}
+
+model SellerServiceLead {
+  id          String              @id @default(cuid())
+  serviceType SellerServiceType
+  status      SellerServiceStatus @default(NEW)
+  name        String
+  companyName String?
+  email       String
+  phone       String
+  city        String
+  address     String?
+  details     Json
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+
+  @@index([serviceType, status])
+  @@index([createdAt])
 }
 
 model Agent {

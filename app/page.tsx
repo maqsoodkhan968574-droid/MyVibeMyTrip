@@ -147,17 +147,17 @@ export default function HomePage() {
           </div>
           <div className="mt-8 grid gap-5 md:grid-cols-3">
             {[
-              [Building2, "For developers", "Launch projects with qualified leads, inventory visibility, and market-ready campaigns."],
-              [UserRoundCheck, "For brokers", "Manage listings, strengthen your local reach, and respond to serious prospects faster."],
-              [Home, "For owners", "List your home with expert support, pricing guidance, and a clear verification journey."]
-            ].map(([Icon, title, copy]) => {
+              [Building2, "For developers", "Launch projects with qualified leads, inventory visibility, and market-ready campaigns.", "/seller-services/developers"],
+              [UserRoundCheck, "For brokers", "Manage listings, strengthen your local reach, and respond to serious prospects faster.", "/seller-services/brokers"],
+              [Home, "For owners", "List your home with expert support, pricing guidance, and a clear verification journey.", "/seller-services/owners"]
+            ].map(([Icon, title, copy, href]) => {
               const ServiceIcon = Icon as typeof Building2;
               return (
                 <article key={title as string} className="border border-white/15 bg-white/5 p-6">
                   <ServiceIcon className="text-brand" size={28} />
                   <h3 className="mt-5 text-xl font-black">{title as string}</h3>
                   <p className="mt-3 text-sm leading-6 text-slate-300">{copy as string}</p>
-                  <Link href="/sell" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand">Get started <ArrowRight size={16} /></Link>
+                  <Link href={href as string} className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand">Add your details <ArrowRight size={16} /></Link>
                 </article>
               );
             })}
