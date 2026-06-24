@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { CalendarDays, CheckCircle2, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -10,6 +11,7 @@ const inputClassName =
 export function ConsultationForm() {
   const [message, setMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const router = useRouter();
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -29,7 +31,9 @@ export function ConsultationForm() {
       return;
     }
 
-    event.currentTarget.reset();
+    const { consultation } = await response.json() as { consultation: { id: string } };
+    router.push(`/consultation/payment/${consultation.id}`);
+    return;
     setMessage("Your consultation request is confirmed. Our executive will contact you to arrange the ₹1,100 token payment and meeting.");
   }
 

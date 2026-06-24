@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Bath, BedDouble, CalendarDays, Check, MapPin, MessageCircle, Ruler, Share2 } from "lucide-react";
 import { Footer } from "@/components/footer";
-import { Button } from "@/components/ui/button";
 import { formatCurrency } from "@/lib/utils";
 import { properties } from "@/lib/property-data";
 
@@ -31,6 +31,7 @@ export default async function PropertyDetailsPage({ params }: { params: Promise<
   const property = properties.find((item) => item.slug === slug);
   if (!property) notFound();
   const whatsapp = `https://wa.me/${property.agent.phone}?text=${encodeURIComponent(`I am interested in ${property.title} on Rivanta Realty`)}`;
+  const share = `mailto:?subject=${encodeURIComponent(property.title)}&body=${encodeURIComponent(`View ${property.title} on Rivanta Realty: ${process.env.NEXTAUTH_URL ?? "http://localhost:3000"}/properties/${property.slug}`)}`;
 
   return (
     <main>
@@ -41,7 +42,7 @@ export default async function PropertyDetailsPage({ params }: { params: Promise<
             <h1 className="mt-2 text-4xl font-black text-navy">{property.title}</h1>
             <p className="mt-2 flex items-center gap-2 text-slate-600"><MapPin size={18} /> {property.locality}, {property.city}</p>
           </div>
-          <Button variant="secondary" className="gap-2"><Share2 size={17} /> Share</Button>
+          <a href={share} className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-slate-200 bg-white px-5 py-2 text-sm font-semibold text-navy"><Share2 size={17} /> Share</a>
         </div>
 
         <div className="grid gap-3 lg:grid-cols-[1.35fr_0.65fr]">
@@ -111,7 +112,7 @@ export default async function PropertyDetailsPage({ params }: { params: Promise<
               <a href={whatsapp} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-brand px-5 py-2.5 text-sm font-bold text-navy hover:bg-green-400">
                 <MessageCircle size={18} /> WhatsApp agent
               </a>
-              <Button className="gap-2" variant="secondary"><CalendarDays size={18} /> Schedule visit</Button>
+              <Link href="/#consultation" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-navy"><CalendarDays size={18} /> Schedule visit</Link>
             </div>
           </aside>
         </div>

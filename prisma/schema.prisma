@@ -104,6 +104,9 @@ model Consultation {
   preferredDate DateTime
   tokenAmount   Decimal             @default(1100) @db.Decimal(10, 2)
   status        ConsultationStatus  @default(REQUESTED)
+  paymentOrderId String?            @unique
+  paymentId      String?
+  paidAt         DateTime?
   createdAt     DateTime            @default(now())
   updatedAt     DateTime            @updatedAt
 
