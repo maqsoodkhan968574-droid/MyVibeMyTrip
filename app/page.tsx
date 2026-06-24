@@ -268,10 +268,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-white py-12">
-        <div className="container-shell"><p className="eyebrow">Buyer resources</p><h2 className="mt-2 text-3xl font-black text-navy">Useful Bihar land and property links</h2><div className="mt-6 grid gap-3 sm:grid-cols-3"><a href="https://biharbhumi.bihar.gov.in/" target="_blank" rel="noreferrer" className="border border-slate-200 p-5 font-black text-navy hover:border-green-500">Bihar Bhumi land records</a><a href="https://biharregd.bihar.gov.in/" target="_blank" rel="noreferrer" className="border border-slate-200 p-5 font-black text-navy hover:border-green-500">Bihar registration portal</a><a href="https://rera.bihar.gov.in/" target="_blank" rel="noreferrer" className="border border-slate-200 p-5 font-black text-navy hover:border-green-500">Bihar RERA information</a></div></div>
-      </section>
-
       <Footer />
     </main>
   );
