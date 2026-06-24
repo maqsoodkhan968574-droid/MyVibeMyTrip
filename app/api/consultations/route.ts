@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
+import { notifyAdmin } from "@/lib/notifications";
 
 const consultationSchema = z.object({
   purpose: z.enum(["BUY", "SELL"]),
@@ -26,6 +27,7 @@ export async function POST(request: Request) {
     },
     select: { id: true }
   });
+  void notifyAdmin("New Rivanta consultation", `${parsed.data.name} requested a ${parsed.data.purpose.toLowerCase()} consultation in ${parsed.data.district}. Phone: ${parsed.data.phone}`);
 
   return NextResponse.json({ consultation }, { status: 201 });
 }

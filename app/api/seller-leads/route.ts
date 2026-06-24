@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
+import { notifyAdmin } from "@/lib/notifications";
 
 const leadSchema = z.object({
   serviceType: z.enum(["DEVELOPER", "BROKER", "OWNER"]),
@@ -33,6 +34,7 @@ export async function POST(request: Request) {
     data: parsed.data,
     select: { id: true }
   });
+  void notifyAdmin(`New ${parsed.data.serviceType.toLowerCase()} submission`, `${parsed.data.name} submitted ${parsed.data.details.title} in ${parsed.data.city}. Phone: ${parsed.data.phone}`);
 
   return NextResponse.json({ lead }, { status: 201 });
 }

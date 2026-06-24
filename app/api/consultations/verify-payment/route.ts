@@ -1,0 +1,7 @@
+import { createHmac, timingSafeEqual } from "crypto";
+import { NextResponse } from "next/server";
+import { z } from "zod";
+import { prisma } from "@/lib/prisma";
+import { notifyAdmin } from "@/lib/notifications";
+const schema = z.object({ consultationId: z.string(), razorpay_order_id: z.string(), razorpay_payment_id: z.string(), razorpay_signature: z.string() });
+export async function POST(request: Request) { const parsed = schema.safeParse(await request.json()); if (!parsed.success) return NextResponse.json({ error: "Invalid payment response." }, { status: 400 }); const secret = process.env.RAZORPAY_KEY_SECRET; if (!secret) return NextResponse.json({ error: "Payment is not configured." }, { status: 503 }); const expected = createHmac("sha256", secret).update(`${parsed.data.razorpay_order_id}|${parsed.data.razorpay_payment_id}`).digest("hex"); if (expected.length !== parsed.data.razorpay_signature.length || !timingSafeEqual(Buffer.from(expected), Buffer.from(parsed.data.razorpay_signature))) return NextResponse.json({ error: "Payment verification failed." }, { status: 400 }); const consultation = await prisma.consultation.update({ where: { id: parsed.data.consultationId }, data: { status: "BOOKED", paymentId: parsed.data.razorpay_payment_id, paidAt: new Date() } }); void notifyAdmin("Consultation payment received", `${consultation.name} paid the consultation token. Payment ID: ${parsed.data.razorpay_payment_id}`); return NextResponse.json({ ok: true }); }

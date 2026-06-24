@@ -99,12 +99,7 @@ export default async function PropertyDetailsPage({ params }: { params: Promise<
 
             <section className="mt-8">
               <h2 className="text-2xl font-black text-navy">Location</h2>
-              <div className="mt-4 grid h-72 place-items-center rounded-lg border border-slate-200 bg-slate-100 text-center text-slate-500">
-                <div>
-                  <MapPin className="mx-auto mb-2 text-green-600" />
-                  Interactive map placeholder for {property.locality}, {property.city}
-                </div>
-              </div>
+              <div className="mt-4 h-72 overflow-hidden border border-slate-200 bg-slate-100"><iframe title={`Map for ${property.title}`} src={`https://www.google.com/maps?q=${encodeURIComponent(`${property.locality}, ${property.city}`)}&output=embed`} className="h-full w-full border-0" loading="lazy" /></div>
             </section>
           </article>
 
