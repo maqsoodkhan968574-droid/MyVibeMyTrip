@@ -27,13 +27,13 @@ export default function HomePage() {
         <div className="container-shell relative grid min-h-[640px] items-center gap-10 py-12 sm:min-h-[720px] sm:py-16 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <span className="inline-flex items-center gap-2 border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-green-100">
-              <Sparkles size={16} /> Bihar&apos;s trusted property marketplace
+              <Sparkles size={16} /> Verified homes across India
             </span>
             <h1 className="mt-6 max-w-3xl text-4xl font-black leading-tight tracking-normal sm:text-6xl lg:text-7xl">
-              Find Verified Properties Across Bihar
+              Rivanta Realty
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-200">
-              Building Trust, Creating Homes. Discover verified homes, plots, and commercial spaces with trusted local dealers across Bihar.
+              Building Trust, Creating Homes. Buy, rent, or sell premium properties with deep search, trusted agents, and listing intelligence built for confident decisions.
             </p>
             <div className="mt-8 grid max-w-xl grid-cols-3 gap-2 text-xs sm:gap-3 sm:text-sm">
               {[
