@@ -38,7 +38,7 @@ export function ConsultationForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-lg bg-white p-5 text-navy shadow-soft sm:p-6">
+    <form onSubmit={handleSubmit} className="border border-slate-200 bg-white p-5 text-navy shadow-soft sm:p-6">
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="text-sm font-bold uppercase tracking-[0.18em] text-green-700">Priority consultation</p>
@@ -89,7 +89,7 @@ export function ConsultationForm() {
         </p>
       </div>
       {message && <p className="mt-4 rounded-lg bg-slate-100 p-3 text-sm font-semibold text-slate-700">{message}</p>}
-      <Button type="submit" disabled={submitting} className="mt-5 w-full gap-2">
+      <Button type="submit" disabled={submitting} className="mt-5 w-full gap-2 shadow-sm">
         <CalendarDays size={18} /> {submitting ? "Sending request..." : "Request one-to-one meeting"}
       </Button>
       <p className="mt-3 flex items-center gap-2 text-xs font-semibold text-slate-500">

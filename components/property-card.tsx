@@ -1,15 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Bath, BedDouble, MapPin, Ruler, ShieldCheck, Star } from "lucide-react";
+import { ArrowUpRight, Bath, BedDouble, MapPin, Ruler, ShieldCheck, Star } from "lucide-react";
 import type { Property } from "@/lib/property-data";
 import { cn, formatCurrency } from "@/lib/utils";
 
 export function PropertyCard({ property, view = "grid" }: { property: Property; view?: "grid" | "list" }) {
   const isList = view === "list";
   return (
-    <article className={cn("overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-soft", isList && "grid md:grid-cols-[320px_1fr]")}>
+    <article className={cn("group overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-green-300 hover:shadow-soft", isList && "grid md:grid-cols-[320px_1fr]")}>
       <Link href={`/properties/${property.slug}`} className="relative block aspect-[4/3] min-h-64 overflow-hidden bg-slate-100">
-        <Image src={property.image} alt={property.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+        <Image src={property.image} alt={property.title} fill className="object-cover transition duration-500 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 33vw" />
         <div className="absolute left-3 top-3 flex gap-2">
           {property.verified && (
             <span className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-1 text-xs font-bold text-green-700 shadow">
@@ -43,6 +43,7 @@ export function PropertyCard({ property, view = "grid" }: { property: Property; 
           <span className="flex items-center gap-1"><Ruler size={16} /> {property.area} sqft</span>
         </div>
         <p className="mt-4 line-clamp-2 text-sm leading-6 text-slate-600">{property.description}</p>
+        <Link href={`/properties/${property.slug}`} className="mt-5 inline-flex items-center gap-2 text-sm font-black text-green-700">View property <ArrowUpRight size={16} /></Link>
       </div>
     </article>
   );

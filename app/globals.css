@@ -12,7 +12,7 @@
 
 body {
   margin: 0;
-  background: #ffffff;
+  background: #f8fafc;
   color: #0f172a;
 }
 
@@ -28,6 +28,23 @@ html {
 .container-shell {
   width: min(1180px, calc(100% - 32px));
   margin-inline: auto;
+}
+
+@layer base {
+  a, button, input, select, textarea {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 3px solid rgba(34, 197, 94, 0.45);
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  .eyebrow {
+    @apply text-xs font-bold uppercase tracking-[0.2em] text-green-700;
+  }
 }
 
 @media (max-width: 640px) {

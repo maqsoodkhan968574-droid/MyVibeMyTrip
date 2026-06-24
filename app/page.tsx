@@ -6,7 +6,6 @@ import { FinanceTools } from "@/components/finance-tools";
 import { Footer } from "@/components/footer";
 import { PropertyCard } from "@/components/property-card";
 import { SearchPanel } from "@/components/search-panel";
-import { Button } from "@/components/ui/button";
 import { agents, properties, reviews } from "@/lib/property-data";
 
 export default function HomePage() {
@@ -27,7 +26,7 @@ export default function HomePage() {
         </div>
         <div className="container-shell relative grid min-h-[640px] items-center gap-10 py-12 sm:min-h-[720px] sm:py-16 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-green-100">
+            <span className="inline-flex items-center gap-2 border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-green-100">
               <Sparkles size={16} /> Verified homes across India
             </span>
             <h1 className="mt-6 max-w-3xl text-4xl font-black leading-tight tracking-normal sm:text-6xl lg:text-7xl">
@@ -53,10 +52,16 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="border-y border-slate-200 bg-white py-5">
+        <div className="container-shell grid gap-4 text-sm sm:grid-cols-3">
+          {["Verified listings and real local experts", "Dedicated support from search to paperwork", "A clear, refundable consultation promise"].map((item) => <p key={item} className="flex items-center gap-2 font-bold text-slate-700"><CheckCircle2 size={18} className="shrink-0 text-green-600" /> {item}</p>)}
+        </div>
+      </section>
+
       <section id="consultation" className="bg-slate-50 py-16">
         <div className="container-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div>
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-green-700">Executive desk</p>
+            <p className="eyebrow">Executive desk</p>
             <h2 className="mt-2 max-w-xl text-4xl font-black leading-tight text-navy">A one-to-one meeting for decisions that need to move quickly.</h2>
             <p className="mt-5 max-w-xl leading-7 text-slate-600">
               Whether you are buying your next home or selling a property, our senior executive gives you dedicated guidance, a clear action plan, and a faster route forward.
@@ -84,7 +89,7 @@ export default function HomePage() {
       <section className="container-shell py-16">
         <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-green-700">Featured</p>
+            <p className="eyebrow">Featured</p>
             <h2 className="mt-2 text-3xl font-black text-navy">Handpicked premium homes</h2>
           </div>
           <Link href="/properties" className="inline-flex items-center gap-2 text-sm font-bold text-green-700">
@@ -102,10 +107,10 @@ export default function HomePage() {
         <div className="container-shell">
           <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
-              <p className="text-sm font-bold uppercase tracking-[0.2em] text-green-700">Latest</p>
+              <p className="eyebrow">Latest</p>
               <h2 className="mt-2 text-3xl font-black text-navy">Fresh listings this week</h2>
             </div>
-            <Button variant="secondary">Set alerts</Button>
+            <Link href="/login" className="inline-flex min-h-11 items-center justify-center border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-navy hover:border-green-500 hover:text-green-700">Set listing alerts</Link>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
             {properties.slice(0, 2).map((property) => (
