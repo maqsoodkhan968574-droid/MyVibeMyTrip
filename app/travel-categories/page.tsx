@@ -12,9 +12,9 @@ export default function TravelCategoriesPage() {
         title="Different travelers need different groups."
         copy="A couple, a senior citizen, a solo traveler, and a Gen Z friend group can all love the same destination but need very different trip design."
       />
-      <section className="container-shell py-16">
+      <section className="container-shell py-12 sm:py-16">
         <SectionHeading title="Find the category that matches how you travel." copy="Categories help us design safer groups, better itineraries, and clearer expectations before booking." />
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-7 grid grid-cols-2 gap-3 sm:mt-8 sm:gap-5 lg:grid-cols-4">
           {travelCategories.map((category) => (
             <CategoryCard key={category.slug} category={category} />
           ))}

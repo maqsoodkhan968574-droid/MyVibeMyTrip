@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
 import { Header } from "@/components/header";
+import { MobileCtaBar } from "@/components/travel/mobile-cta-bar";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXTAUTH_URL ?? "http://localhost:3000"),
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className="min-h-screen bg-white font-sans text-navy antialiased">
         <Header />
         {children}
+        <MobileCtaBar />
       </body>
     </html>
   );

@@ -140,6 +140,10 @@ html {
     width: min(100% - 24px, 1180px);
   }
 
+  body {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
   input,
   select,
   textarea {

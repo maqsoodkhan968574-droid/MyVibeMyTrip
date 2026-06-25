@@ -2,7 +2,7 @@ import { BadgeCheck, Plane, Quote, Sparkles } from "lucide-react";
 
 export function FounderVision() {
   return (
-    <section className="founder-vision-section relative overflow-hidden bg-[#071A2F] py-20 text-white sm:py-24">
+    <section className="founder-vision-section relative overflow-hidden bg-[#071A2F] py-14 text-white sm:py-16">
       <div className="founder-map-texture absolute inset-0 opacity-45" />
       <div className="absolute inset-x-0 bottom-0 h-44 opacity-30">
         <div className="founder-mountain founder-mountain-back" />
@@ -14,57 +14,50 @@ export function FounderVision() {
       <Plane className="founder-plane absolute right-8 top-16 text-amber-300/80" size={24} />
 
       <div className="container-shell relative">
-        <div className="founder-vision-reveal mx-auto max-w-5xl rounded-lg border border-white/10 bg-white/[0.06] p-6 shadow-[0_30px_100px_rgba(0,0,0,0.28)] backdrop-blur-md sm:p-10 lg:p-12">
-          <div className="flex flex-col gap-8 lg:grid lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+        <div className="founder-vision-reveal mx-auto max-w-5xl rounded-lg border border-white/10 bg-white/[0.06] p-6 shadow-[0_30px_100px_rgba(0,0,0,0.28)] backdrop-blur-md sm:p-8 lg:p-10">
+          <div className="flex flex-col gap-7 lg:grid lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
             <div>
               <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-amber-200">
                 <Sparkles size={15} />
                 Founder Vision
               </p>
-              <h2 className="mt-6 text-4xl font-black leading-tight tracking-normal sm:text-5xl">
+              <h2 className="mt-5 text-3xl font-black leading-tight tracking-normal sm:text-4xl">
                 A Vision by Harsh Raj
               </h2>
-              <p className="mt-4 text-lg font-semibold leading-8 text-cyan-100">
+              <p className="mt-3 text-base font-semibold leading-7 text-cyan-100 sm:text-lg">
                 Building the world's first compatibility-first travel platform.
               </p>
             </div>
 
             <div className="relative">
-              <Quote className="mb-5 text-amber-300" size={42} strokeWidth={1.7} />
-              <div className="grid gap-5 text-base leading-8 text-slate-200 sm:text-lg">
-                <p>Every great startup begins with solving a real problem.</p>
+              <Quote className="mb-4 text-amber-300" size={34} strokeWidth={1.7} />
+              <div className="grid gap-4 text-sm leading-7 text-slate-200 sm:text-base">
                 <p>
-                  MyVibeMyTrip was born after a real travel experience where completely different types of travelers were grouped together in one shared journey. Although everyone visited the same destination, no one truly enjoyed the experience because everyone's vibe, energy, interests, and expectations were different.
+                  MyVibeMyTrip was born from a real travel problem: people visiting the same destination, but not enjoying the journey because their vibe, pace, interests, and expectations were completely different.
                 </p>
-                <p>That experience inspired a simple but powerful idea:</p>
-                <p className="rounded-lg border border-amber-300/25 bg-amber-300/10 p-5 text-xl font-black leading-8 text-white">
+                <p className="rounded-lg border border-amber-300/25 bg-amber-300/10 p-4 text-lg font-black leading-7 text-white">
                   People don't just choose destinations. They should choose the people they travel with.
                 </p>
                 <p>
-                  Our mission is to redefine group travel by matching like-minded travelers based on personality, travel style, interests, and energy.
+                  Our mission is to make group travel feel safer, more natural, and more memorable by matching like-minded travelers before the trip begins.
                 </p>
-                <p>
-                  We believe the best memories are created not only by beautiful places, but by the people who experience them together.
-                </p>
-                <p>This is more than a travel website.</p>
-                <p>It is the beginning of a new way to explore the world.</p>
               </div>
 
-              <blockquote className="mt-8 rounded-lg border border-cyan-300/25 bg-cyan-300/10 p-5 text-xl font-black leading-8 text-white sm:text-2xl">
+              <blockquote className="mt-6 rounded-lg border border-cyan-300/25 bg-cyan-300/10 p-4 text-lg font-black leading-7 text-white sm:text-xl">
                 "We don't just build trips. We build unforgettable journeys with the right people."
               </blockquote>
 
-              <div className="mt-8 flex flex-col gap-3 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+              <div className="mt-6 flex flex-col gap-3 border-t border-white/10 pt-5 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <div className="flex items-center gap-3">
-                    <p className="font-['Brush_Script_MT','Segoe_Script',cursive] text-4xl text-white sm:text-5xl">
+                    <p className="font-['Brush_Script_MT','Segoe_Script',cursive] text-3xl text-white sm:text-4xl">
                       Harsh Raj
                     </p>
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-amber-300 text-navy shadow-lg">
-                      <BadgeCheck size={20} />
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-amber-300 text-navy shadow-lg">
+                      <BadgeCheck size={18} />
                     </span>
                   </div>
-                  <p className="mt-1 text-sm font-bold uppercase tracking-[0.18em] text-slate-300">
+                  <p className="mt-1 text-xs font-bold uppercase tracking-[0.18em] text-slate-300">
                     Founder, MyVibeMyTrip.com
                   </p>
                 </div>

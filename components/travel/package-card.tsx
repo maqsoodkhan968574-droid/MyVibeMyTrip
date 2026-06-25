@@ -17,17 +17,17 @@ export function PackageCard({ trip }: PackageCardProps) {
           {trip.badge}
         </span>
       </div>
-      <div className="flex flex-1 flex-col p-5">
-        <h3 className="text-xl font-black leading-snug text-navy">{trip.title}</h3>
-        <div className="mt-4 grid gap-3 text-sm text-slate-600">
-          <span className="flex gap-2"><MapPin size={17} className="shrink-0 text-green-700" /> {trip.destination}</span>
-          <span className="flex gap-2"><CalendarDays size={17} className="shrink-0 text-green-700" /> {trip.duration}</span>
-          <span className="flex gap-2"><Tag size={17} className="shrink-0 text-green-700" /> {trip.category}</span>
+      <div className="flex flex-1 flex-col p-3 sm:p-5">
+        <h3 className="text-sm font-black leading-snug text-navy sm:text-xl">{trip.title}</h3>
+        <div className="mt-3 grid gap-2 text-xs text-slate-600 sm:mt-4 sm:gap-3 sm:text-sm">
+          <span className="hidden gap-2 sm:flex"><MapPin size={17} className="shrink-0 text-green-700" /> {trip.destination}</span>
+          <span className="flex gap-1.5 sm:gap-2"><CalendarDays size={15} className="shrink-0 text-green-700 sm:size-[17px]" /> {trip.duration}</span>
+          <span className="flex gap-1.5 sm:gap-2"><Tag size={15} className="shrink-0 text-green-700 sm:size-[17px]" /> {trip.category}</span>
         </div>
-        <div className="mt-5 flex flex-col gap-3 border-t border-slate-100 pt-5 sm:flex-row sm:items-center sm:justify-between">
-          <strong className="text-sm text-navy">{trip.price}</strong>
-          <Link href="/compatibility-quiz" className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-navy px-4 py-2 text-sm font-bold text-white transition hover:bg-slate-800">
-            View Details <ArrowRight size={16} />
+        <div className="mt-4 flex flex-col gap-3 border-t border-slate-100 pt-4 sm:mt-5 sm:flex-row sm:items-center sm:justify-between sm:pt-5">
+          <strong className="text-xs leading-5 text-navy sm:text-sm">{trip.price}</strong>
+          <Link href="/compatibility-quiz" className="inline-flex min-h-10 items-center justify-center gap-1 rounded-lg bg-navy px-3 py-2 text-xs font-bold text-white transition hover:bg-slate-800 sm:min-h-10 sm:gap-2 sm:px-4 sm:text-sm">
+            Details <ArrowRight size={15} />
           </Link>
         </div>
       </div>

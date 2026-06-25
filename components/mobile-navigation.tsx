@@ -20,10 +20,10 @@ export function MobileNavigation() {
         {open ? <X size={23} /> : <Menu size={24} />}
       </button>
       {open ? (
-        <nav aria-label="Mobile navigation" className="absolute left-0 top-full w-full border-b border-slate-200 bg-white p-4 shadow-lg">
-          <div className="container-shell grid gap-1">
+        <nav aria-label="Mobile navigation" className="absolute left-0 top-full max-h-[calc(100vh-64px)] w-full overflow-y-auto border-b border-slate-200 bg-white p-4 shadow-lg">
+          <div className="container-shell grid gap-1 pb-3">
             {navigationLinks.map((link) => (
-              <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="rounded-lg px-3 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50 hover:text-navy">
+              <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="rounded-lg px-3 py-3.5 text-base font-bold text-slate-700 hover:bg-slate-50 hover:text-navy">
                 {link.label}
               </Link>
             ))}

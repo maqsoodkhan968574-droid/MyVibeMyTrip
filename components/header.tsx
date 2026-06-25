@@ -7,7 +7,7 @@ import { MobileNavigation } from "@/components/mobile-navigation";
 export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-slate-100 bg-white/95 backdrop-blur">
-      <div className="container-shell flex h-20 items-center justify-between gap-4">
+      <div className="container-shell flex h-16 items-center justify-between gap-3 sm:h-20 sm:gap-4">
         <Link href="/" aria-label="MyVibeMyTrip.com home">
           <BrandMark />
         </Link>

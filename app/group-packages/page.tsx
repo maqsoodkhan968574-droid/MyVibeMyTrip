@@ -11,8 +11,8 @@ export default function GroupPackagesPage() {
         title="Sample packages built around compatibility, not randomness."
         copy="Every package includes destination, duration, category, starting price placeholder, and a compatibility badge."
       />
-      <section className="container-shell py-16">
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <section className="container-shell py-12 sm:py-16">
+        <div className="grid grid-cols-2 gap-3 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {groupPackages.map((trip) => (
             <PackageCard key={trip.title} trip={trip} />
           ))}

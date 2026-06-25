@@ -11,8 +11,8 @@ export default function DestinationsPage() {
         title="Phase 1 routes across Sikkim and Darjeeling."
         copy="Start with mountain destinations where shared taxis, hotel choices, and travel pace matter deeply to the final experience."
       />
-      <section className="container-shell py-16">
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <section className="container-shell py-12 sm:py-16">
+        <div className="grid grid-cols-2 gap-3 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {destinations.map((destination) => (
             <DestinationCard key={destination.name} destination={destination} />
           ))}
