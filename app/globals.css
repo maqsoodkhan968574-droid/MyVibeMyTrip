@@ -85,6 +85,59 @@ html {
   }
 }
 
+@keyframes hero-cta-pulse {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 16px 38px rgba(251, 191, 36, 0.18);
+  }
+  50% {
+    transform: translateY(-2px) scale(1.015);
+    box-shadow: 0 22px 48px rgba(251, 191, 36, 0.32);
+  }
+}
+
+@keyframes hero-cta-scan {
+  from {
+    transform: translateX(-120%);
+  }
+  to {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes hero-cta-border {
+  0%, 100% {
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+  50% {
+    border-color: rgba(251, 191, 36, 0.72);
+  }
+}
+
+.hero-cta-primary,
+.hero-cta-secondary {
+  position: relative;
+}
+
+.hero-cta-primary {
+  animation: hero-cta-pulse 3.2s ease-in-out infinite;
+}
+
+.hero-cta-secondary {
+  animation: hero-cta-border 3.2s ease-in-out infinite;
+}
+
+.hero-cta-primary::after,
+.hero-cta-secondary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 0 35%, rgba(255, 255, 255, 0.16) 45%, transparent 55% 100%);
+  transform: translateX(-120%);
+  animation: hero-cta-scan 4.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
 .founder-map-texture {
   background:
     radial-gradient(circle at 24% 30%, rgba(45, 212, 191, 0.16), transparent 24%),

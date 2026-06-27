@@ -1,4 +1,5 @@
 import { DestinationCard } from "@/components/travel/destination-card";
+import { DestinationGallerySection } from "@/components/travel/destination-gallery-section";
 import { Footer } from "@/components/footer";
 import { PageHero } from "@/components/travel/page-hero";
 import { destinations } from "@/data/travel";
@@ -18,6 +19,7 @@ export default function DestinationsPage() {
           ))}
         </div>
       </section>
+      <DestinationGallerySection destinations={destinations} />
       <Footer />
     </main>
   );

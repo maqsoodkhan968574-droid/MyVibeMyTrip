@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, MessageCircle, ShieldCheck, Sparkles, UsersRound } from "lucide-react";
+import { ArrowRight, CheckCircle2, MessageCircle, ShieldCheck, Sparkles } from "lucide-react";
 import { CategoryCard } from "@/components/travel/category-card";
 import { DestinationCard } from "@/components/travel/destination-card";
 import { Footer } from "@/components/footer";
@@ -36,10 +36,10 @@ export default function HomePage() {
               A smart group travel platform that matches you with like-minded travelers for Sikkim, Darjeeling, and beyond.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row">
-              <Link href="/compatibility-quiz" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-amber-400 px-5 py-3 text-sm font-black text-navy transition hover:bg-amber-300">
+              <Link href="/compatibility-quiz" className="hero-cta-primary inline-flex min-h-12 items-center justify-center gap-2 overflow-hidden rounded-lg bg-amber-400 px-5 py-3 text-sm font-black text-navy transition hover:bg-amber-300">
                 Take Compatibility Quiz <ArrowRight size={18} />
               </Link>
-              <Link href="/group-packages" className="inline-flex min-h-12 items-center justify-center rounded-lg border border-white/25 bg-white/10 px-5 py-3 text-sm font-black text-white transition hover:bg-white hover:text-navy">
+              <Link href="/group-packages" className="hero-cta-secondary inline-flex min-h-12 items-center justify-center overflow-hidden rounded-lg border border-white/25 bg-white/10 px-5 py-3 text-sm font-black text-white transition hover:bg-white hover:text-navy">
                 Explore Trips
               </Link>
             </div>

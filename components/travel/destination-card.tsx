@@ -1,12 +1,16 @@
 import Image from "next/image";
-import { MapPin } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRight, MapPin } from "lucide-react";
 import type { Destination } from "@/types/travel";
+import { destinationSlug } from "@/utils/destinations";
 
 type DestinationCardProps = {
   destination: Destination;
 };
 
 export function DestinationCard({ destination }: DestinationCardProps) {
+  const detailsHref = `/destinations/${destinationSlug(destination.name)}`;
+
   return (
     <article className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-soft">
       <div className="relative aspect-[4/3]">
@@ -26,6 +30,14 @@ export function DestinationCard({ destination }: DestinationCardProps) {
             </span>
           ))}
         </div>
+        <Link
+          href={detailsHref}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-4 inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-lg bg-navy px-3 py-2 text-xs font-black text-white transition hover:bg-green-800 sm:min-h-11 sm:text-sm"
+        >
+          All details <ArrowUpRight size={15} />
+        </Link>
       </div>
     </article>
   );

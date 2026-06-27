@@ -12,8 +12,14 @@ export type Destination = {
   name: string;
   region: "Sikkim" | "Darjeeling";
   description: string;
+  detailIntro: string;
+  bestFor: string[];
+  highlights: string[];
+  travelTips: string[];
   image: string;
   tags: string[];
+  gallerySlots: number;
+  galleryImages?: string[];
 };
 
 export type GroupPackage = {
