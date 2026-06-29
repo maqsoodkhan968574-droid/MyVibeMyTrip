@@ -6,11 +6,16 @@ import { usePathname } from "next/navigation";
 import { LogIn, Sparkles, X } from "lucide-react";
 
 const hiddenRoutes = ["/login", "/register", "/admin-login", "/admin", "/dashboard"];
-const promptStorageKey = "myvibemytrip-login-prompt-seen";
+const promptStorageKey = "myvibemytrip-login-prompt-seen-v2";
 
 export function LoginPromptModal() {
   const pathname = usePathname();
   const [visible, setVisible] = useState(false);
+
+  function dismissPrompt() {
+    window.localStorage.setItem(promptStorageKey, "true");
+    setVisible(false);
+  }
 
   useEffect(() => {
     const shouldHide = hiddenRoutes.some((route) => pathname === route || pathname.startsWith(`${route}/`));
@@ -24,9 +29,11 @@ export function LoginPromptModal() {
       return;
     }
 
-    window.localStorage.setItem(promptStorageKey, "true");
     setVisible(true);
-    const timer = window.setTimeout(() => setVisible(false), 7000);
+    const timer = window.setTimeout(() => {
+      window.localStorage.setItem(promptStorageKey, "true");
+      setVisible(false);
+    }, 7000);
     return () => window.clearTimeout(timer);
   }, [pathname]);
 
@@ -40,7 +47,7 @@ export function LoginPromptModal() {
         <button
           type="button"
           aria-label="Close login popup"
-          onClick={() => setVisible(false)}
+          onClick={dismissPrompt}
           className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-lg text-slate-500 transition hover:bg-slate-100 hover:text-navy"
         >
           <X size={18} />
@@ -60,7 +67,7 @@ export function LoginPromptModal() {
         <div className="mt-4 grid grid-cols-2 gap-2">
           <Link
             href="/login"
-            onClick={() => setVisible(false)}
+            onClick={dismissPrompt}
             className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-navy px-4 py-2 text-sm font-black text-white transition hover:bg-green-800"
           >
             <LogIn size={16} />
@@ -68,7 +75,7 @@ export function LoginPromptModal() {
           </Link>
           <Link
             href="/register"
-            onClick={() => setVisible(false)}
+            onClick={dismissPrompt}
             className="inline-flex min-h-11 items-center justify-center rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-black text-navy transition hover:border-green-300 hover:text-green-700"
           >
             Signup
