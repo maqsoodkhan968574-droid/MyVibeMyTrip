@@ -141,29 +141,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-navy py-12 text-white sm:py-16">
-        <div className="container-shell grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-          <div>
-            <p className="eyebrow text-amber-300">For partners</p>
-            <h2 className="mt-2 text-2xl font-black leading-tight sm:text-4xl">More verified customers for local travel businesses.</h2>
-            <p className="mt-4 leading-7 text-slate-300">
-              We work with travel agencies, taxi owners, hotels, guides, and adventure operators. You handle the ground experience; we bring better-matched groups, digital reach, and clearer expectations before the trip begins.
-            </p>
-            <Link href="/partner-with-us" className="mt-6 inline-flex min-h-12 items-center justify-center rounded-lg bg-amber-400 px-6 py-3 text-sm font-black text-navy hover:bg-amber-300">
-              Partner With Us
-            </Link>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {["Verified customers", "Better group matching", "More bookings", "Digital reach"].map((item) => (
-              <div key={item} className="rounded-lg border border-white/10 bg-white/10 p-5">
-                <CheckCircle2 className="text-green-300" size={24} />
-                <h3 className="mt-3 font-black">{item}</h3>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="container-shell py-12 sm:py-16">
         <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <SectionHeading eyebrow="Group packages" title="Sample trips designed around traveler compatibility." />
@@ -191,6 +168,29 @@ export default function HomePage() {
                   <p className="text-sm text-slate-500">{review.role}</p>
                 </div>
               </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-navy py-12 text-white sm:py-16">
+        <div className="container-shell grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+          <div>
+            <p className="eyebrow text-amber-300">For partners</p>
+            <h2 className="mt-2 text-2xl font-black leading-tight sm:text-4xl">More verified customers for local travel businesses.</h2>
+            <p className="mt-4 leading-7 text-slate-300">
+              We work with travel agencies, taxi owners, hotels, guides, and adventure operators. You handle the ground experience; we bring better-matched groups, digital reach, and clearer expectations before the trip begins.
+            </p>
+            <Link href="/partner-with-us" className="mt-6 inline-flex min-h-12 items-center justify-center rounded-lg bg-amber-400 px-6 py-3 text-sm font-black text-navy hover:bg-amber-300">
+              Partner With Us
+            </Link>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {["Verified customers", "Better group matching", "More bookings", "Digital reach"].map((item) => (
+              <div key={item} className="rounded-lg border border-white/10 bg-white/10 p-5">
+                <CheckCircle2 className="text-green-300" size={24} />
+                <h3 className="mt-3 font-black">{item}</h3>
+              </div>
             ))}
           </div>
         </div>
