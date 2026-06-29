@@ -6,6 +6,9 @@ import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import { prisma } from "@/lib/prisma";
 
+const myVibeAdminEmail = process.env.MYVIBE_ADMIN_EMAIL ?? "admin@myvibemytrip.com";
+const myVibeAdminPassword = process.env.MYVIBE_ADMIN_PASSWORD ?? "8809155543@MVMT";
+
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   session: { strategy: "jwt" },
@@ -22,11 +25,26 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials.password) return null;
-        const user = await prisma.user.findUnique({ where: { email: credentials.email } });
-        if (!user?.passwordHash) return null;
-        const valid = await bcrypt.compare(credentials.password, user.passwordHash);
-        if (!valid) return null;
-        return { id: user.id, name: user.name, email: user.email, image: user.image, role: user.role };
+
+        if (credentials.email === myVibeAdminEmail && credentials.password === myVibeAdminPassword) {
+          return {
+            id: "myvibe-admin",
+            name: "Harsh Raj",
+            email: myVibeAdminEmail,
+            image: null,
+            role: "ADMIN"
+          };
+        }
+
+        try {
+          const user = await prisma.user.findUnique({ where: { email: credentials.email } });
+          if (!user?.passwordHash) return null;
+          const valid = await bcrypt.compare(credentials.password, user.passwordHash);
+          if (!valid) return null;
+          return { id: user.id, name: user.name, email: user.email, image: user.image, role: user.role };
+        } catch {
+          return null;
+        }
       }
     }),
     GoogleProvider({

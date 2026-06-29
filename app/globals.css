@@ -114,6 +114,19 @@ html {
   }
 }
 
+@keyframes login-prompt-progress {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+.login-prompt-progress {
+  animation: login-prompt-progress 7s linear forwards;
+}
+
 .hero-cta-primary,
 .hero-cta-secondary {
   position: relative;

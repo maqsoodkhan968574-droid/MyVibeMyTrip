@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
 import { Header } from "@/components/header";
+import { LoginPromptModal } from "@/components/travel/login-prompt-modal";
 import { MobileCtaBar } from "@/components/travel/mobile-cta-bar";
 
 export const metadata: Metadata = {
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <body className="min-h-screen bg-white font-sans text-navy antialiased">
         <Header />
+        <LoginPromptModal />
         {children}
         <MobileCtaBar />
       </body>

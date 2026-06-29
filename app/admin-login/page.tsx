@@ -21,7 +21,15 @@ export default async function AdminLoginPage({ searchParams }: { searchParams: P
         <p className="rounded-lg bg-slate-50 p-3 text-sm leading-6 text-slate-600">
           This secure space is only for MyVibeMyTrip admins to manage travel packages, itineraries, destination galleries, partner content, and website operations.
         </p>
-        <LoginForm callbackUrl={callbackUrl} submitLabel="Enter admin panel" />
+        <LoginForm
+          callbackUrl={callbackUrl}
+          submitLabel="Enter admin panel"
+          identifierLabel="Email ID"
+          identifierPlaceholder=""
+          identifierType="text"
+          showSocialLogin={false}
+          autoComplete="off"
+        />
         <div className="mt-5 flex items-center gap-2 rounded-lg bg-amber-50 p-3 text-sm font-semibold text-slate-700">
           <LockKeyhole className="shrink-0 text-amber-600" size={17} />
           Admin routes are hidden from normal users and require an admin account.
