@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { signIn } from "next-auth/react";
-import { Building, Mail, User } from "lucide-react";
+import { Compass, Mail, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function RegisterForm() {
@@ -41,13 +41,15 @@ export function RegisterForm() {
           </span>
         </label>
         <label className="grid gap-2 text-sm font-semibold text-slate-700">
-          Account type
+          Travel profile type
           <span className="flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-3">
-            <Building size={18} className="text-green-600" />
+            <Compass size={18} className="text-green-600" />
             <select name="role" className="w-full bg-transparent outline-none">
-              <option value="USER">Buyer / Tenant</option>
-              <option value="USER">Seller</option>
-              <option value="AGENT">Agent</option>
+              <option value="USER">Traveler</option>
+              <option value="USER">Solo traveler</option>
+              <option value="USER">Couple traveler</option>
+              <option value="USER">Family traveler</option>
+              <option value="USER">Partner enquiry</option>
             </select>
           </span>
         </label>
@@ -64,7 +66,7 @@ export function RegisterForm() {
         <input name="password" type="password" placeholder="Create a strong password" className="rounded-lg border border-slate-200 px-3 py-3 outline-none focus:border-brand" required />
       </label>
       {message && <p className="rounded-lg bg-red-50 p-3 text-sm font-semibold text-red-700">{message}</p>}
-      <Button type="submit">Register</Button>
+      <Button type="submit">Create traveler account</Button>
     </form>
   );
 }

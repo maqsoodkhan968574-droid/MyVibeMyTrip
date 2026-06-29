@@ -5,7 +5,8 @@ import { signIn } from "next-auth/react";
 import { Github, Lock, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export function LoginForm() {
+export function LoginForm({ callbackUrl, submitLabel = "Login" }: { callbackUrl?: string; submitLabel?: string }) {
+  const destination = callbackUrl ?? "/dashboard";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -16,10 +17,10 @@ export function LoginForm() {
       email,
       password,
       redirect: false,
-      callbackUrl: "/dashboard"
+      callbackUrl: destination
     });
     if (result?.error) setMessage("Invalid email or password.");
-    if (result?.ok) window.location.href = "/dashboard";
+    if (result?.ok) window.location.href = destination;
   }
 
   return (
@@ -44,13 +45,13 @@ export function LoginForm() {
           <a href="/forgot-password" className="font-semibold text-green-700">Forgot password?</a>
         </div>
         {message && <p className="rounded-lg bg-red-50 p-3 text-sm font-semibold text-red-700">{message}</p>}
-        <Button type="submit">Login</Button>
+        <Button type="submit">{submitLabel}</Button>
       </form>
       <div className="mt-5 grid gap-3">
-        <Button type="button" variant="secondary" className="gap-2" onClick={() => signIn("github", { callbackUrl: "/dashboard" })}>
+        <Button type="button" variant="secondary" className="gap-2" onClick={() => signIn("github", { callbackUrl: destination })}>
           <Github size={18} /> Continue with GitHub
         </Button>
-        <Button type="button" variant="secondary" onClick={() => signIn("google", { callbackUrl: "/dashboard" })}>
+        <Button type="button" variant="secondary" onClick={() => signIn("google", { callbackUrl: destination })}>
           Continue with Google
         </Button>
       </div>

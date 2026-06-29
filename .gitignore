@@ -6,3 +6,7 @@ node_modules
 dist
 coverage
 *.log
+tsconfig.tsbuildinfo
+
+# Separate project archive/preview. Do not mix Rivanta Realty into MyVibeMyTrip builds or commits.
+rivanta-preview/

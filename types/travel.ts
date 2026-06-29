@@ -24,12 +24,25 @@ export type Destination = {
 
 export type GroupPackage = {
   title: string;
+  slug: string;
   destination: string;
   duration: string;
   category: string;
   price: string;
   badge: string;
   image: string;
+  overview: string;
+  inclusions: string[];
+  itinerary: PackageItineraryDay[];
+};
+
+export type PackageItineraryDay = {
+  day: number;
+  title: string;
+  location: string;
+  activities: string[];
+  stay: string;
+  meals: string;
 };
 
 export type QuizAnswers = {

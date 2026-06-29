@@ -2,12 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CalendarDays, MapPin, ShieldCheck, Tag } from "lucide-react";
 import type { GroupPackage } from "@/types/travel";
+import { packageSlug } from "@/utils/packages";
 
 type PackageCardProps = {
   trip: GroupPackage;
 };
 
 export function PackageCard({ trip }: PackageCardProps) {
+  const itineraryHref = `/group-packages/${trip.slug || packageSlug(trip.title)}`;
+
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-soft">
       <div className="relative aspect-[16/10]">
@@ -26,8 +29,13 @@ export function PackageCard({ trip }: PackageCardProps) {
         </div>
         <div className="mt-4 flex flex-col gap-3 border-t border-slate-100 pt-4 sm:mt-5 sm:flex-row sm:items-center sm:justify-between sm:pt-5">
           <strong className="text-xs leading-5 text-navy sm:text-sm">{trip.price}</strong>
-          <Link href="/compatibility-quiz" className="inline-flex min-h-10 items-center justify-center gap-1 rounded-lg bg-navy px-3 py-2 text-xs font-bold text-white transition hover:bg-slate-800 sm:min-h-10 sm:gap-2 sm:px-4 sm:text-sm">
-            Details <ArrowRight size={15} />
+          <Link
+            href={itineraryHref}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex min-h-10 items-center justify-center gap-1 rounded-lg bg-navy px-3 py-2 text-xs font-bold text-white transition hover:bg-slate-800 sm:min-h-10 sm:gap-2 sm:px-4 sm:text-sm"
+          >
+            Itinerary <ArrowRight size={15} />
           </Link>
         </div>
       </div>

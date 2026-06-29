@@ -352,57 +352,351 @@ export const destinations: Destination[] = [
 export const groupPackages: GroupPackage[] = [
   {
     title: "Gen Z Sikkim Adventure Trip",
+    slug: "gen-z-sikkim-adventure-trip",
     destination: "Gangtok, Tsomgo Lake, Nathula Pass",
     duration: "5 days / 4 nights",
     category: "Gen Z Squad",
     price: "Starting from INR 18,999",
     badge: "94% vibe match",
-    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
+    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
+    overview: "A high-energy Sikkim starter route for friends and young travelers who want cafes, reels, snow points, viewpoints, and a matched group with similar pace.",
+    inclusions: ["Verified shared group", "Matched taxi group", "Standard hotel stay", "Local sightseeing plan", "Pre-trip group chat"],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival and Gangtok vibe check",
+        location: "Gangtok",
+        activities: ["Pickup from NJP or Bagdogra", "Scenic drive to Gangtok", "Evening MG Marg walk", "Group intro and trip briefing"],
+        stay: "Gangtok",
+        meals: "Dinner"
+      },
+      {
+        day: 2,
+        title: "Gangtok city, cafes, and viewpoints",
+        location: "Gangtok",
+        activities: ["Tashi View Point", "Ganesh Tok or Hanuman Tok", "Ropeway photo stop", "Cafe time and local market evening"],
+        stay: "Gangtok",
+        meals: "Breakfast"
+      },
+      {
+        day: 3,
+        title: "Tsomgo Lake and snow route",
+        location: "Tsomgo Lake",
+        activities: ["Early start toward Tsomgo Lake", "Lake photography and snow-season viewpoints", "Optional Baba Mandir route if open", "Return to Gangtok"],
+        stay: "Gangtok",
+        meals: "Breakfast"
+      },
+      {
+        day: 4,
+        title: "Nathula Pass adventure day",
+        location: "Nathula Pass",
+        activities: ["Permit-based Nathula Pass visit", "High-altitude mountain road experience", "Group photos and warm cafe stop", "Evening playlist ride back"],
+        stay: "Gangtok",
+        meals: "Breakfast"
+      },
+      {
+        day: 5,
+        title: "Checkout and return transfer",
+        location: "Gangtok to NJP or Bagdogra",
+        activities: ["Breakfast and checkout", "Return drive", "Final group photos", "Drop at NJP or Bagdogra"],
+        stay: "Not included",
+        meals: "Breakfast"
+      }
+    ]
   },
   {
     title: "Romantic Darjeeling Couple Escape",
+    slug: "romantic-darjeeling-couple-escape",
     destination: "Darjeeling, Tiger Hill, Tea Gardens",
     duration: "4 days / 3 nights",
     category: "Couples Escape",
     price: "Starting from INR 22,499",
     badge: "Privacy-first",
-    image: "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?auto=format&fit=crop&w=900&q=80"
+    image: "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?auto=format&fit=crop&w=900&q=80",
+    overview: "A slower Darjeeling plan for couples who want privacy, heritage charm, sunrise views, tea gardens, cafes, and a group that respects couple space.",
+    inclusions: ["Couple-friendly matched group", "Privacy-aware pacing", "Comfort stay", "Darjeeling local sightseeing", "Tea garden visit"],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Darjeeling",
+        location: "Darjeeling",
+        activities: ["Pickup from NJP or Bagdogra", "Hill drive to Darjeeling", "Check-in and rest", "Evening Mall Road walk"],
+        stay: "Darjeeling",
+        meals: "Dinner"
+      },
+      {
+        day: 2,
+        title: "Sunrise, heritage, and town charm",
+        location: "Tiger Hill and Darjeeling",
+        activities: ["Early Tiger Hill sunrise if weather permits", "Batasia Loop", "Ghoom Monastery", "Cafes and Chowrasta evening"],
+        stay: "Darjeeling",
+        meals: "Breakfast"
+      },
+      {
+        day: 3,
+        title: "Tea garden and couple photo day",
+        location: "Darjeeling Tea Gardens",
+        activities: ["Tea estate visit", "Tea tasting or factory visit where available", "Slow photo walk", "Optional toy train experience"],
+        stay: "Darjeeling",
+        meals: "Breakfast"
+      },
+      {
+        day: 4,
+        title: "Checkout and departure",
+        location: "Darjeeling to NJP or Bagdogra",
+        activities: ["Breakfast and checkout", "Return transfer", "Drop at NJP or Bagdogra"],
+        stay: "Not included",
+        meals: "Breakfast"
+      }
+    ]
   },
   {
     title: "Family Friendly Gangtok Tour",
+    slug: "family-friendly-gangtok-tour",
     destination: "Gangtok, Tsomgo Lake, local sightseeing",
     duration: "6 days / 5 nights",
     category: "Family Explorer",
     price: "Starting from INR 24,999",
     badge: "Easy pace",
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=900&q=80"
+    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=900&q=80",
+    overview: "A balanced Gangtok family route with easy pacing, practical breaks, scenic spots, local culture, and comfortable day trips that do not rush children or elders.",
+    inclusions: ["Family-matched group", "Comfortable road pacing", "Family hotel stay", "Local sightseeing", "Verified taxi partner"],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival and easy check-in",
+        location: "Gangtok",
+        activities: ["Pickup from NJP or Bagdogra", "Comfort breaks on the hill drive", "Hotel check-in", "Light evening walk near MG Marg"],
+        stay: "Gangtok",
+        meals: "Dinner"
+      },
+      {
+        day: 2,
+        title: "Relaxed Gangtok local sightseeing",
+        location: "Gangtok",
+        activities: ["Tashi View Point", "Ganesh Tok", "Flower Exhibition Centre", "Ropeway or local market based on comfort"],
+        stay: "Gangtok",
+        meals: "Breakfast"
+      },
+      {
+        day: 3,
+        title: "Tsomgo Lake family day",
+        location: "Tsomgo Lake",
+        activities: ["Early but comfortable start", "Tsomgo Lake visit", "Photo stops and warm snack break", "Return to Gangtok before evening"],
+        stay: "Gangtok",
+        meals: "Breakfast"
+      },
+      {
+        day: 4,
+        title: "Monastery and culture route",
+        location: "Gangtok",
+        activities: ["Rumtek or Enchey Monastery route", "Handicraft centre", "Slow cafe lunch break", "Free evening"],
+        stay: "Gangtok",
+        meals: "Breakfast"
+      },
+      {
+        day: 5,
+        title: "Buffer day for comfort",
+        location: "Gangtok",
+        activities: ["Flexible local sightseeing", "Shopping time", "Optional short viewpoint drive", "Family group dinner"],
+        stay: "Gangtok",
+        meals: "Breakfast"
+      },
+      {
+        day: 6,
+        title: "Departure",
+        location: "Gangtok to NJP or Bagdogra",
+        activities: ["Breakfast and checkout", "Return transfer with breaks", "Drop at NJP or Bagdogra"],
+        stay: "Not included",
+        meals: "Breakfast"
+      }
+    ]
   },
   {
     title: "Women Only Sikkim Group Trip",
+    slug: "women-only-sikkim-group-trip",
     destination: "Gangtok, Lachung, Yumthang Valley",
     duration: "6 days / 5 nights",
     category: "Women-Only Trips",
     price: "Starting from INR 26,999",
     badge: "Verified group",
-    image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80"
+    image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80",
+    overview: "A women-only Sikkim route focused on verified grouping, safer coordination, mountain scenery, Gangtok city comfort, and the soft adventure of Lachung and Yumthang Valley.",
+    inclusions: ["Women-only verified group", "Pre-trip group chat", "Partner taxi coordination", "Gangtok and Lachung stays", "Yumthang Valley route plan"],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival and verified group briefing",
+        location: "Gangtok",
+        activities: ["Pickup from NJP or Bagdogra", "Drive to Gangtok", "Check-in", "Safety briefing and MG Marg group walk"],
+        stay: "Gangtok",
+        meals: "Dinner"
+      },
+      {
+        day: 2,
+        title: "Gangtok local comfort day",
+        location: "Gangtok",
+        activities: ["Viewpoints and monastery route", "Cafe break", "Local shopping", "Pre-briefing for North Sikkim drive"],
+        stay: "Gangtok",
+        meals: "Breakfast"
+      },
+      {
+        day: 3,
+        title: "Drive to Lachung",
+        location: "Lachung",
+        activities: ["Scenic drive toward Lachung", "Waterfall stops", "Group lunch break en route", "Check-in and rest"],
+        stay: "Lachung",
+        meals: "Breakfast and dinner"
+      },
+      {
+        day: 4,
+        title: "Yumthang Valley day",
+        location: "Yumthang Valley",
+        activities: ["Morning Yumthang Valley visit", "Mountain and river photography", "Optional Zero Point add-on if open", "Return to Lachung"],
+        stay: "Lachung",
+        meals: "Breakfast and dinner"
+      },
+      {
+        day: 5,
+        title: "Return to Gangtok",
+        location: "Lachung to Gangtok",
+        activities: ["Breakfast and checkout", "Return drive", "Rest stops", "Evening free time in Gangtok"],
+        stay: "Gangtok",
+        meals: "Breakfast"
+      },
+      {
+        day: 6,
+        title: "Departure",
+        location: "Gangtok to NJP or Bagdogra",
+        activities: ["Checkout", "Return transfer", "Drop at NJP or Bagdogra"],
+        stay: "Not included",
+        meals: "Breakfast"
+      }
+    ]
   },
   {
     title: "Senior Comfort Darjeeling Tour",
+    slug: "senior-comfort-darjeeling-tour",
     destination: "Darjeeling, Mirik, Tea Gardens",
     duration: "5 days / 4 nights",
     category: "Senior Comfort",
     price: "Starting from INR 20,999",
     badge: "Comfort route",
-    image: "https://images.unsplash.com/photo-1517824806704-9040b037703b?auto=format&fit=crop&w=900&q=80"
+    image: "https://images.unsplash.com/photo-1517824806704-9040b037703b?auto=format&fit=crop&w=900&q=80",
+    overview: "A relaxed Darjeeling plan for senior travelers with fewer rushed starts, gentle sightseeing, tea gardens, Mirik lake views, and comfort-focused travel pacing.",
+    inclusions: ["Senior-friendly matched group", "Easy route planning", "Comfort stay", "Slow sightseeing", "Tea garden and Mirik day"],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival with easy pacing",
+        location: "Darjeeling",
+        activities: ["Pickup from NJP or Bagdogra", "Slow hill transfer with comfort stops", "Hotel check-in", "Rest evening"],
+        stay: "Darjeeling",
+        meals: "Dinner"
+      },
+      {
+        day: 2,
+        title: "Gentle Darjeeling local sightseeing",
+        location: "Darjeeling",
+        activities: ["Batasia Loop", "Ghoom Monastery", "Peace Pagoda or local viewpoint", "Free evening near Mall Road"],
+        stay: "Darjeeling",
+        meals: "Breakfast"
+      },
+      {
+        day: 3,
+        title: "Tea garden slow day",
+        location: "Darjeeling Tea Gardens",
+        activities: ["Tea estate visit", "Short garden walk", "Tea tasting where available", "Restful afternoon"],
+        stay: "Darjeeling",
+        meals: "Breakfast"
+      },
+      {
+        day: 4,
+        title: "Mirik lake and scenic drive",
+        location: "Mirik",
+        activities: ["Day trip to Mirik", "Lake view time", "Easy market stop", "Return to Darjeeling"],
+        stay: "Darjeeling",
+        meals: "Breakfast"
+      },
+      {
+        day: 5,
+        title: "Departure",
+        location: "Darjeeling to NJP or Bagdogra",
+        activities: ["Breakfast and checkout", "Comfort transfer", "Drop at NJP or Bagdogra"],
+        stay: "Not included",
+        meals: "Breakfast"
+      }
+    ]
   },
   {
     title: "Luxury North-East Escape",
+    slug: "luxury-north-east-escape",
     destination: "Gangtok, Pelling, Darjeeling",
     duration: "7 days / 6 nights",
     category: "Luxury Travelers",
     price: "Starting from INR 54,999",
     badge: "Premium match",
-    image: "https://images.unsplash.com/photo-1518002054494-3a6f94352e9d?auto=format&fit=crop&w=900&q=80"
+    image: "https://images.unsplash.com/photo-1518002054494-3a6f94352e9d?auto=format&fit=crop&w=900&q=80",
+    overview: "A premium Sikkim-Darjeeling escape for travelers who want better stays, scenic transfers, refined pacing, signature viewpoints, and a group that values comfort.",
+    inclusions: ["Premium matched group", "Upgraded stay category", "Private-comfort route planning", "Scenic transfers", "Curated viewpoints and tea experiences"],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival and Gangtok premium check-in",
+        location: "Gangtok",
+        activities: ["Pickup from NJP or Bagdogra", "Scenic transfer to Gangtok", "Premium check-in", "Relaxed MG Marg evening"],
+        stay: "Gangtok",
+        meals: "Dinner"
+      },
+      {
+        day: 2,
+        title: "Gangtok viewpoints and culture",
+        location: "Gangtok",
+        activities: ["Tashi View Point", "Monastery route", "Ropeway or curated cafe stop", "Free premium dining evening"],
+        stay: "Gangtok",
+        meals: "Breakfast"
+      },
+      {
+        day: 3,
+        title: "Tsomgo Lake premium scenic day",
+        location: "Tsomgo Lake",
+        activities: ["Tsomgo Lake visit", "Snow-season scenic stops", "Optional Nathula route if permits allow", "Return to Gangtok"],
+        stay: "Gangtok",
+        meals: "Breakfast"
+      },
+      {
+        day: 4,
+        title: "Transfer to Pelling",
+        location: "Pelling",
+        activities: ["Checkout and scenic transfer", "Kanchenjunga-view route", "Check-in", "Sunset viewpoint if time allows"],
+        stay: "Pelling",
+        meals: "Breakfast and dinner"
+      },
+      {
+        day: 5,
+        title: "Pelling heritage and skywalk",
+        location: "Pelling",
+        activities: ["Pemayangtse Monastery", "Rabdentse Ruins", "Skywalk or viewpoint visit", "Slow premium evening"],
+        stay: "Pelling",
+        meals: "Breakfast"
+      },
+      {
+        day: 6,
+        title: "Darjeeling tea and heritage",
+        location: "Darjeeling",
+        activities: ["Transfer to Darjeeling", "Tea garden stop where possible", "Hotel check-in", "Mall Road evening"],
+        stay: "Darjeeling",
+        meals: "Breakfast"
+      },
+      {
+        day: 7,
+        title: "Departure",
+        location: "Darjeeling to NJP or Bagdogra",
+        activities: ["Optional early Tiger Hill add-on", "Breakfast and checkout", "Drop at NJP or Bagdogra"],
+        stay: "Not included",
+        meals: "Breakfast"
+      }
+    ]
   }
 ];
 
