@@ -5,12 +5,7 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { navigationLinks } from "@/data/travel";
 
-type MobileNavigationProps = {
-  accountHref: string;
-  accountLabel: string;
-};
-
-export function MobileNavigation({ accountHref, accountLabel }: MobileNavigationProps) {
+export function MobileNavigation() {
   const [open, setOpen] = useState(false);
 
   return (
@@ -35,8 +30,8 @@ export function MobileNavigation({ accountHref, accountLabel }: MobileNavigation
             <Link href="/compatibility-quiz" onClick={() => setOpen(false)} className="mt-2 rounded-lg bg-navy px-4 py-3 text-center text-sm font-bold text-white">
               Take Compatibility Quiz
             </Link>
-            <Link href={accountHref} onClick={() => setOpen(false)} className="rounded-lg border border-slate-200 px-4 py-3 text-center text-sm font-bold text-navy">
-              {accountLabel}
+            <Link href="/login" onClick={() => setOpen(false)} className="rounded-lg border border-slate-200 px-4 py-3 text-center text-sm font-bold text-navy">
+              Account
             </Link>
           </div>
         </nav>
