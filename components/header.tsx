@@ -19,9 +19,9 @@ export function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          <Link href="/login" className="hidden items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-navy transition hover:border-green-300 hover:text-green-700 sm:inline-flex">
+          <Link href="/my-bookings" className="hidden items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-navy transition hover:border-green-300 hover:text-green-700 sm:inline-flex">
             <UserRound size={18} />
-            Account
+            My Trips
           </Link>
           <Link href="/compatibility-quiz" className="hidden items-center gap-2 rounded-lg bg-navy px-4 py-2 text-sm font-bold text-white transition hover:bg-slate-800 sm:inline-flex">
             <UserRoundCheck size={18} />

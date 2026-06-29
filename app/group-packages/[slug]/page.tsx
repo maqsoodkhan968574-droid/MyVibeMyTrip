@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, CalendarDays, CheckCircle2, MapPin, PencilLine, ShieldCheck, Sparkles } from "lucide-react";
 import { Footer } from "@/components/footer";
+import { PackagePaymentButton } from "@/components/travel/package-payment-button";
 import { groupPackages } from "@/data/travel";
 import { getPackageBySlug } from "@/utils/packages";
 
@@ -145,6 +146,13 @@ export default async function PackageDetailsPage({ params }: PackageDetailsPageP
                 </div>
               ))}
             </div>
+            <div className="mt-6 rounded-lg border border-amber-200 bg-amber-50 p-4">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-amber-700">Secure booking token</p>
+              <p className="mt-2 text-sm font-semibold leading-6 text-slate-700">
+                Pay INR 1,100 through Razorpay to reserve your matching request. Final package confirmation happens after vibe and group availability checks.
+              </p>
+            </div>
+            <PackagePaymentButton className="mt-4" packageSlug={trip.slug} packageTitle={trip.title} />
             <Link href="/compatibility-quiz" className="mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-lg bg-amber-400 px-5 py-3 text-sm font-black text-navy transition hover:bg-amber-300">
               Check My Compatibility
             </Link>

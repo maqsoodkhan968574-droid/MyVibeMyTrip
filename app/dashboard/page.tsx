@@ -53,6 +53,9 @@ export default async function DashboardPage() {
             <div className="mt-5 rounded-lg border border-dashed border-slate-300 bg-slate-50 p-6 text-sm leading-6 text-slate-600">
               No saved trips yet. Soon this space will store packages you add to cart, compatibility results, selected dates, group preferences, and booking status.
             </div>
+            <Link href="/my-bookings" className="mt-4 inline-flex min-h-11 items-center justify-center rounded-lg bg-green-700 px-5 py-2 text-sm font-black text-white transition hover:bg-green-800">
+              Open My Bookings
+            </Link>
           </div>
 
           <aside className="rounded-lg border border-amber-200 bg-amber-50 p-5 shadow-sm sm:p-6">

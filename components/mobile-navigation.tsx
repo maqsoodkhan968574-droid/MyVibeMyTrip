@@ -30,8 +30,8 @@ export function MobileNavigation() {
             <Link href="/compatibility-quiz" onClick={() => setOpen(false)} className="mt-2 rounded-lg bg-navy px-4 py-3 text-center text-sm font-bold text-white">
               Take Compatibility Quiz
             </Link>
-            <Link href="/login" onClick={() => setOpen(false)} className="rounded-lg border border-slate-200 px-4 py-3 text-center text-sm font-bold text-navy">
-              Account Login / Signup
+            <Link href="/my-bookings" onClick={() => setOpen(false)} className="rounded-lg border border-slate-200 px-4 py-3 text-center text-sm font-bold text-navy">
+              My Trips / Login
             </Link>
           </div>
         </nav>
