@@ -1,7 +1,14 @@
 import Link from "next/link";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Youtube } from "lucide-react";
 import { navigationLinks } from "@/data/travel";
 import { BrandMark } from "@/components/travel/brand-mark";
+
+const socialLinks = [
+  { label: "Instagram", href: "https://www.instagram.com/myvibemytrip", icon: Instagram },
+  { label: "Facebook", href: "https://www.facebook.com/myvibemytrip", icon: Facebook },
+  { label: "YouTube", href: "https://www.youtube.com/@myvibemytrip", icon: Youtube },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/myvibemytrip", icon: Linkedin }
+];
 
 export function Footer() {
   return (
@@ -36,9 +43,26 @@ export function Footer() {
         <div>
           <h3 className="mb-3 font-black">Contact</h3>
           <div className="grid gap-3 text-sm text-slate-300">
-            <span className="flex gap-2"><Phone size={16} /> +91 99999 99999</span>
-            <span className="flex gap-2"><Mail size={16} /> hello@myvibemytrip.com</span>
+            <span className="flex gap-2"><Phone size={16} /> +91 88091 55543</span>
+            <span className="flex gap-2"><Mail size={16} /> myvibemytrip@gmail.com</span>
             <span className="flex gap-2"><MapPin size={16} /> Sikkim, Darjeeling, and beyond</span>
+          </div>
+          <div className="mt-5">
+            <h3 className="mb-3 font-black">Follow us</h3>
+            <div className="flex flex-wrap gap-2">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  aria-label={social.label}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="grid size-10 place-items-center rounded-lg border border-white/10 bg-white/10 text-slate-200 transition hover:border-amber-300/50 hover:bg-amber-300 hover:text-navy"
+                >
+                  <social.icon size={18} />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>

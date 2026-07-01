@@ -17,8 +17,8 @@ export default function ContactPage() {
         <div className="rounded-lg bg-navy p-6 text-white shadow-soft">
           <h2 className="text-2xl font-black">Contact details</h2>
           <div className="mt-6 grid gap-4 text-sm text-slate-300">
-            <span className="flex gap-3"><Phone className="text-amber-300" size={18} /> +91 99999 99999</span>
-            <span className="flex gap-3"><Mail className="text-amber-300" size={18} /> hello@myvibemytrip.com</span>
+            <span className="flex gap-3"><Phone className="text-amber-300" size={18} /> +91 88091 55543</span>
+            <span className="flex gap-3"><Mail className="text-amber-300" size={18} /> myvibemytrip@gmail.com</span>
             <span className="flex gap-3"><MapPin className="text-amber-300" size={18} /> Sikkim, Darjeeling, and beyond</span>
           </div>
         </div>

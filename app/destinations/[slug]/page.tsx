@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Camera, CheckCircle2, CloudSun, IndianRupee, MapPin, Route, ShieldCheck, Sparkles, Wifi } from "lucide-react";
+import { ArrowLeft, ArrowRight, CalendarDays, Camera, CheckCircle2, CloudSun, IndianRupee, MapPin, Route, ShieldCheck, Sparkles, Tag, Wifi } from "lucide-react";
 import { Footer } from "@/components/footer";
 import { destinations } from "@/data/travel";
 import { destinationSlug, getDestinationBySlug } from "@/utils/destinations";
+import { getPackagesForDestination } from "@/utils/packages";
 
 type DestinationDetailsPageProps = {
   params: Promise<{
@@ -44,6 +45,7 @@ export default async function DestinationDetailsPage({ params }: DestinationDeta
   }
 
   const galleryImages = destination.galleryImages ?? [];
+  const relatedPackages = getPackagesForDestination(destination.name, destination.region);
   const isHighAltitude = destination.tags.some((tag) => ["Snow", "High altitude", "Adventure", "Long drive"].includes(tag));
   const isDarjeeling = destination.region === "Darjeeling";
   const quickFacts = [
@@ -197,6 +199,48 @@ export default async function DestinationDetailsPage({ params }: DestinationDeta
               </Link>
             </div>
           </article>
+        </div>
+      </section>
+
+      <section className="bg-white py-10 sm:py-14">
+        <div className="container-shell">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="eyebrow">Book this place</p>
+              <h2 className="mt-2 text-2xl font-black text-navy sm:text-4xl">Packages matched for {destination.name}</h2>
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600">
+                Exact destination packages appear first, followed by nearby {destination.region} routes that fit the same travel region.
+              </p>
+            </div>
+            <Link href="/group-packages" className="inline-flex min-h-11 w-fit items-center justify-center rounded-lg border border-slate-200 px-4 py-2 text-sm font-black text-navy transition hover:border-green-700 hover:text-green-800">
+              View all packages
+            </Link>
+          </div>
+
+          <div className="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {relatedPackages.slice(0, 3).map((trip) => (
+              <article key={trip.slug} className="rounded-lg border border-slate-200 bg-slate-50 p-5 shadow-sm">
+                <span className="inline-flex rounded-full bg-green-100 px-3 py-1 text-xs font-black uppercase tracking-[0.12em] text-green-800">
+                  {trip.badge}
+                </span>
+                <h3 className="mt-4 text-lg font-black leading-snug text-navy">{trip.title}</h3>
+                <div className="mt-4 grid gap-2 text-sm font-semibold text-slate-600">
+                  <span className="flex gap-2"><MapPin size={16} className="shrink-0 text-green-700" /> {trip.destination}</span>
+                  <span className="flex gap-2"><CalendarDays size={16} className="shrink-0 text-green-700" /> {trip.duration}</span>
+                  <span className="flex gap-2"><Tag size={16} className="shrink-0 text-green-700" /> {trip.category}</span>
+                </div>
+                <div className="mt-5 flex flex-col gap-3 border-t border-slate-200 pt-5 sm:flex-row sm:items-center sm:justify-between">
+                  <strong className="text-sm text-navy">{trip.price}</strong>
+                  <Link
+                    href={`/group-packages/${trip.slug}`}
+                    className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-navy px-4 py-2 text-sm font-black text-white transition hover:bg-green-800"
+                  >
+                    Book now <ArrowRight size={16} />
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 

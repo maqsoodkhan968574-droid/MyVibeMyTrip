@@ -5,6 +5,7 @@ import { CategoryCard } from "@/components/travel/category-card";
 import { DestinationCard } from "@/components/travel/destination-card";
 import { Footer } from "@/components/footer";
 import { FounderVision } from "@/components/travel/founder-vision";
+import { HomeLiveMatcher } from "@/components/travel/home-live-matcher";
 import { PackageCard } from "@/components/travel/package-card";
 import { SectionHeading } from "@/components/travel/section-heading";
 import { TrustGrid } from "@/components/travel/trust-grid";
@@ -56,23 +57,7 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-          <div className="rounded-lg border border-white/15 bg-white/95 p-4 text-navy shadow-soft sm:p-5">
-            <p className="eyebrow">Live matching preview</p>
-            <h2 className="mt-2 text-xl font-black sm:text-2xl">From random group to right group</h2>
-            <div className="mt-4 grid gap-2 sm:mt-5 sm:gap-3">
-              {[
-                ["Age and trip type", "18-24, friends, high energy"],
-                ["Travel style", "Adventure, reels, local cafes"],
-                ["Budget and comfort", "Standard stays, shared verified taxi"],
-                ["Result", "Gen Z Adventure Explorer, 92% match"]
-              ].map(([label, value]) => (
-                <div key={label} className="rounded-lg border border-slate-200 bg-slate-50 p-4">
-                  <p className="text-xs font-black uppercase tracking-[0.16em] text-green-700">{label}</p>
-                  <p className="mt-1 font-bold text-slate-800">{value}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+          <HomeLiveMatcher />
         </div>
       </section>
 
