@@ -5,6 +5,8 @@ import { getPackageBySlug } from "@/utils/packages";
 
 const schema = z.object({
   packageSlug: z.string().min(1),
+  adults: z.number().int().min(1).max(20).optional(),
+  children: z.number().int().min(0).max(20).optional(),
   razorpay_order_id: z.string().min(1),
   razorpay_payment_id: z.string().min(1),
   razorpay_signature: z.string().min(1)
@@ -45,6 +47,8 @@ export async function POST(request: Request) {
     ok: true,
     packageSlug: trip.slug,
     packageTitle: trip.title,
+    adults: parsed.data.adults ?? 1,
+    children: parsed.data.children ?? 0,
     paymentId: parsed.data.razorpay_payment_id
   });
 }

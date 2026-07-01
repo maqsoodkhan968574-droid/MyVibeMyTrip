@@ -74,13 +74,13 @@ export default async function DestinationDetailsPage({ params }: DestinationDeta
             <ArrowLeft size={17} />
             Back to destinations
           </Link>
-          <div className="mt-8 max-w-4xl">
+          <div className="page-hero-copy mt-8 max-w-4xl">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-amber-200">
               <MapPin size={15} />
               {destination.region}
             </span>
-            <h1 className="mt-5 text-4xl font-black leading-tight sm:text-6xl">{destination.name}</h1>
-            <p className="mt-5 max-w-3xl text-base leading-7 text-slate-200 sm:text-lg sm:leading-8">{destination.detailIntro}</p>
+            <h1 className="page-hero-title mt-5 text-4xl font-black leading-tight sm:text-6xl">{destination.name}</h1>
+            <p className="page-hero-subtitle mt-5 max-w-3xl text-base leading-7 text-slate-200 sm:text-lg sm:leading-8">{destination.detailIntro}</p>
           </div>
         </div>
       </section>

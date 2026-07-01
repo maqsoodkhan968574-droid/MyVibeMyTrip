@@ -10,6 +10,8 @@ export default function GroupPackagesPage() {
         eyebrow="Group packages"
         title="Sample packages built around compatibility, not randomness."
         copy="Every package includes destination, duration, category, starting price placeholder, and a compatibility badge."
+        image="/destinations/tsomgo-lake-cover.jpg"
+        imageAlt="Tsomgo Lake package route"
       />
       <section className="container-shell py-12 sm:py-16">
         <div className="grid grid-cols-2 gap-3 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">

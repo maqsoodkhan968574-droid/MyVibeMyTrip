@@ -11,6 +11,8 @@ export default function DestinationsPage() {
         eyebrow="Destinations"
         title="Phase 1 routes across Sikkim and Darjeeling."
         copy="Start with mountain destinations where shared taxis, hotel choices, and travel pace matter deeply to the final experience."
+        image="/destinations/gangtok/gangtok-cover.png"
+        imageAlt="Gangtok mountain road and valley view"
       />
       <section className="container-shell py-12 sm:py-16">
         <div className="grid grid-cols-2 gap-3 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">

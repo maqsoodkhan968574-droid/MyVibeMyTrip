@@ -5,11 +5,13 @@ import { getPackageBySlug } from "@/utils/packages";
 
 const schema = z.object({
   packageSlug: z.string().min(1),
+  adults: z.number().int().min(1).max(20).default(1),
+  children: z.number().int().min(0).max(20).default(0),
   customerName: z.string().optional(),
   customerEmail: z.string().email().optional()
 });
 
-const bookingTokenAmount = 1100;
+const bookingTokenPerAdult = 1100;
 
 export const runtime = "nodejs";
 
@@ -35,6 +37,7 @@ export async function POST(request: Request) {
 
   const basic = Buffer.from(`${keyId}:${keySecret}`).toString("base64");
   const receipt = `mvmt_${trip.slug}_${Date.now()}`.slice(0, 40);
+  const bookingTokenAmount = parsed.data.adults * bookingTokenPerAdult;
 
   const response = await fetch("https://api.razorpay.com/v1/orders", {
     method: "POST",
@@ -49,6 +52,10 @@ export async function POST(request: Request) {
       notes: {
         packageSlug: trip.slug,
         packageTitle: trip.title,
+        adults: String(parsed.data.adults),
+        children: String(parsed.data.children),
+        tokenPerAdult: String(bookingTokenPerAdult),
+        childrenToken: "0",
         customerName: parsed.data.customerName ?? "",
         customerEmail: parsed.data.customerEmail ?? ""
       }
@@ -56,6 +63,17 @@ export async function POST(request: Request) {
   }).catch(() => null);
 
   if (!response?.ok) {
+    const razorpayStatus = response?.status ?? "network";
+    const razorpayError = response ? await response.text().catch(() => "") : "";
+    console.error("Package payment order failed", {
+      packageSlug: trip.slug,
+      adults: parsed.data.adults,
+      children: parsed.data.children,
+      amount: bookingTokenAmount,
+      razorpayStatus,
+      razorpayError
+    });
+
     return NextResponse.json({ error: "Unable to start package payment." }, { status: 502 });
   }
 
@@ -66,6 +84,9 @@ export async function POST(request: Request) {
     keyId,
     packageTitle: trip.title,
     amount: bookingTokenAmount,
+    adults: parsed.data.adults,
+    children: parsed.data.children,
+    tokenPerAdult: bookingTokenPerAdult,
     packagesCount: groupPackages.length
   });
 }

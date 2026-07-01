@@ -205,7 +205,7 @@ export const destinations: Destination[] = [
     bestFor: ["First-time Sikkim travelers", "Friends groups", "Families", "Couples", "Cafe and city-view lovers"],
     highlights: ["MG Marg evening walks", "Gangtok Ropeway", "Rumtek and Enchey monastery routes", "Tashi View Point", "Easy access to Tsomgo Lake and Nathula Pass"],
     travelTips: ["Keep Gangtok as the first base before higher-altitude routes.", "Match travelers by wake-up time because day trips often start early.", "Choose a group with similar food and cafe preferences for better evenings."],
-    image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=900&q=80",
+    image: "/destinations/gangtok/gangtok-cover.png",
     tags: ["City base", "Cafes", "Monasteries"],
     gallerySlots: 10,
     galleryImages: [
@@ -230,7 +230,7 @@ export const destinations: Destination[] = [
     bestFor: ["Adventure travelers", "Snow lovers", "Road-trip groups", "High-energy friends", "Photography-focused travelers"],
     highlights: ["High-altitude border experience", "Snowy mountain roads", "Baba Mandir route", "Permit-based travel planning", "Strong scenic photo stops"],
     travelTips: ["Permits and weather conditions decide access, so keep the plan flexible.", "Avoid grouping relaxed travelers with high-energy snow groups here.", "Carry warm layers even when Gangtok weather feels mild."],
-    image: "https://images.unsplash.com/photo-1605640840605-14ac1855827b?auto=format&fit=crop&w=900&q=80",
+    image: "/destinations/nathula-pass-cover.jpg",
     tags: ["Snow", "High altitude", "Adventure"],
     gallerySlots: 10,
     galleryImages: destinationGalleries.nathulaPass
@@ -244,7 +244,7 @@ export const destinations: Destination[] = [
     bestFor: ["Families", "Couples", "Photo lovers", "Balanced-energy groups", "First-time mountain travelers"],
     highlights: ["Glacial lake views", "Prayer flag scenery", "Snow-season landscapes", "Yak photo points", "Easy pairing with Nathula Pass when permits allow"],
     travelTips: ["Start early to avoid crowding and weather changes.", "Match groups by photography interest because people spend different time at viewpoints.", "Respect altitude comfort and do not rush senior or family groups."],
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=900&q=80",
+    image: "/destinations/tsomgo-lake-cover.jpg",
     tags: ["Lake", "Photos", "Scenic"],
     gallerySlots: 10,
     galleryImages: destinationGalleries.tsomgoLake
@@ -258,7 +258,7 @@ export const destinations: Destination[] = [
     bestFor: ["Nature-first travelers", "Couples", "Soft adventure groups", "Calm friends groups", "Mountain photography travelers"],
     highlights: ["Yumthang Valley access", "Waterfalls and rivers", "Quiet village stays", "Snow-season routes", "Long scenic drives"],
     travelTips: ["Group people who are comfortable with longer drives.", "Keep music and rest preferences aligned for the taxi journey.", "Choose warmer stays during colder months."],
-    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
+    image: "/destinations/lachung-cover.jpg",
     tags: ["Valley", "Waterfalls", "Calm"],
     gallerySlots: 10,
     galleryImages: destinationGalleries.lachung
@@ -272,7 +272,7 @@ export const destinations: Destination[] = [
     bestFor: ["Peaceful travelers", "Nature photographers", "Adventure groups", "Remote-location explorers", "Slow-travel couples"],
     highlights: ["Remote village atmosphere", "North Sikkim mountain views", "Quiet homestay-style stays", "Early-morning routes", "Raw landscape photography"],
     travelTips: ["Set expectations clearly because comfort is simpler than Gangtok.", "Match travelers by patience for long roads and limited facilities.", "Keep buffer time for weather and route restrictions."],
-    image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80",
+    image: "/destinations/lachen-cover.jpeg",
     tags: ["Remote", "North Sikkim", "Nature"],
     gallerySlots: 10,
     galleryImages: destinationGalleries.lachen
@@ -286,7 +286,7 @@ export const destinations: Destination[] = [
     bestFor: ["Snow lovers", "Adventure clubs", "Gen Z groups", "High-energy travelers", "Road-trip photographers"],
     highlights: ["Snow landscapes", "Remote high-altitude views", "Dramatic mountain roads", "Adventure photo stops", "Yumthang route combination"],
     travelTips: ["This is not ideal for very relaxed travelers or people avoiding long drives.", "Match by wake-up time and adventure level before booking.", "Weather can change quickly, so keep plans flexible."],
-    image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=900&q=80",
+    image: "/destinations/zero-point-cover.png",
     tags: ["Snow", "Adventure", "Long drive"],
     gallerySlots: 10,
     galleryImages: destinationGalleries.zeroPoint
@@ -300,7 +300,7 @@ export const destinations: Destination[] = [
     bestFor: ["Couples", "Families", "Cafe lovers", "Senior comfort groups", "Heritage and tea travelers"],
     highlights: ["Mall Road and cafes", "Toy Train experience", "Tea estate visits", "Batasia Loop", "Kanchenjunga viewpoints"],
     travelTips: ["Match groups by walking comfort because hill-town movement can be steep.", "Cafe and shopping preferences matter here.", "Keep sunrise plans optional for relaxed travelers."],
-    image: "https://images.unsplash.com/photo-1576675466969-38eeae4b41f6?auto=format&fit=crop&w=900&q=80",
+    image: "/destinations/darjeeling-cover.png",
     tags: ["Tea town", "Heritage", "Cafes"],
     gallerySlots: 10,
     galleryImages: destinationGalleries.darjeeling
@@ -314,7 +314,7 @@ export const destinations: Destination[] = [
     bestFor: ["Sunrise seekers", "Photographers", "Couples", "Nature lovers", "Early-riser groups"],
     highlights: ["Kanchenjunga sunrise views", "Early morning mountain atmosphere", "Photo-first experience", "Classic Darjeeling viewpoint", "Easy add-on with local sightseeing"],
     travelTips: ["Only group people who are comfortable waking very early.", "Weather decides visibility, so expectations should be realistic.", "Carry warm clothes for the pre-sunrise wait."],
-    image: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=80",
+    image: "/destinations/tiger-hill-cover.png",
     tags: ["Sunrise", "Viewpoint", "Early start"],
     gallerySlots: 10,
     galleryImages: destinationGalleries.tigerHill
@@ -328,7 +328,7 @@ export const destinations: Destination[] = [
     bestFor: ["Couples", "Families", "Senior travelers", "Luxury travelers", "Slow-paced photo lovers"],
     highlights: ["Tea estate landscapes", "Green hill views", "Tea tasting experiences", "Premium photo locations", "Gentle walking routes"],
     travelTips: ["This works best with relaxed or balanced-energy travelers.", "Avoid pairing people who want rush-heavy sightseeing with slow tea-estate groups.", "Morning and late afternoon light gives better photos."],
-    image: "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?auto=format&fit=crop&w=900&q=80",
+    image: "/destinations/tea-gardens-cover.png",
     tags: ["Tea", "Walks", "Relaxed"],
     gallerySlots: 10,
     galleryImages: destinationGalleries.teaGardens
@@ -342,7 +342,7 @@ export const destinations: Destination[] = [
     bestFor: ["Families", "Senior comfort groups", "Couples", "Relaxed travelers", "Easy-day groups"],
     highlights: ["Mirik Lake views", "Boating-style leisure", "Pine and hill scenery", "Soft-paced day trip", "Family-friendly atmosphere"],
     travelTips: ["Choose Mirik for groups that value comfort and conversation.", "Keep activity expectations light and scenic.", "It pairs well with tea gardens for a relaxed day plan."],
-    image: "https://images.unsplash.com/photo-1517824806704-9040b037703b?auto=format&fit=crop&w=900&q=80",
+    image: "/destinations/mirik-cover.png",
     tags: ["Lake", "Easy pace", "Family"],
     gallerySlots: 10,
     galleryImages: destinationGalleries.mirik

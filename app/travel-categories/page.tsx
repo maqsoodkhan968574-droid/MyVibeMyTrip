@@ -11,6 +11,8 @@ export default function TravelCategoriesPage() {
         eyebrow="Travel categories"
         title="Different travelers need different groups."
         copy="A couple, a senior citizen, a solo traveler, and a Gen Z friend group can all love the same destination but need very different trip design."
+        image="/destinations/darjeeling-cover.png"
+        imageAlt="Darjeeling mountain travel categories"
       />
       <section className="container-shell py-12 sm:py-16">
         <SectionHeading title="Find the category that matches how you travel." copy="Categories help us design safer groups, better itineraries, and clearer expectations before booking." />

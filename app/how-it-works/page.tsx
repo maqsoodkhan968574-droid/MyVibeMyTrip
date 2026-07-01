@@ -12,6 +12,8 @@ export default function HowItWorksPage() {
         eyebrow="How it works"
         title="From travel profile to compatible group in five steps."
         copy="The platform converts personal travel preferences into better group chemistry before anyone enters the taxi, hotel, or itinerary."
+        image="/destinations/tiger-hill-cover.png"
+        imageAlt="Travelers watching a mountain sunrise"
       />
       <section className="container-shell py-16">
         <div className="grid gap-5 md:grid-cols-5">

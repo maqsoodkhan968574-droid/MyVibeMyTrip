@@ -16,8 +16,8 @@ export default function HomePage() {
       <section className="relative overflow-hidden bg-navy text-white">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=85"
-            alt="Mountain road group travel"
+            src="/hero/myvibemytrip-home-hero.png"
+            alt="Sikkim and Darjeeling mountain road travel"
             fill
             priority
             className="object-cover opacity-45"

@@ -10,6 +10,8 @@ export default function PartnerWithUsPage() {
         eyebrow="Partner with us"
         title="We are not competing with travel agencies. We make group travel easier to sell."
         copy="Local partners get verified customers, better group matching, more bookings, and digital reach while continuing to operate the ground experience."
+        image="/destinations/tea-gardens-cover.png"
+        imageAlt="Local travel partners in hill destinations"
       />
       <section className="container-shell grid gap-10 py-16 lg:grid-cols-[0.9fr_1.1fr]">
         <div>

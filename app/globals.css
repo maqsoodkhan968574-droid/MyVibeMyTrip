@@ -123,8 +123,81 @@ html {
   }
 }
 
+@keyframes page-hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes page-hero-glow-float {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(24px, 18px, 0) scale(1.08);
+  }
+}
+
+@keyframes page-hero-route-drift {
+  from {
+    background-position: 0 0, 80px 40px;
+  }
+  to {
+    background-position: 220px 120px, 300px 180px;
+  }
+}
+
+@keyframes page-hero-image-zoom {
+  from {
+    opacity: 0;
+    transform: translateX(22px) scale(1.03);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
 .login-prompt-progress {
   animation: login-prompt-progress 7s linear forwards;
+}
+
+.page-hero-glow,
+.page-hero-glow-delayed {
+  animation: page-hero-glow-float 9s ease-in-out infinite;
+}
+
+.page-hero-glow-delayed {
+  animation-delay: -4s;
+}
+
+.page-hero-route {
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.28) 1px, transparent 1.6px),
+    radial-gradient(circle, rgba(251, 191, 36, 0.32) 1px, transparent 1.5px);
+  background-size: 120px 120px, 180px 180px;
+  animation: page-hero-route-drift 18s linear infinite;
+}
+
+.page-hero-copy {
+  animation: page-hero-fade-up 0.75s ease-out both;
+}
+
+.page-hero-title {
+  animation: page-hero-fade-up 0.85s ease-out 0.08s both;
+}
+
+.page-hero-subtitle {
+  animation: page-hero-fade-up 0.85s ease-out 0.16s both;
+}
+
+.page-hero-image-wrap {
+  animation: page-hero-image-zoom 0.9s ease-out 0.14s both;
 }
 
 .hero-cta-primary,

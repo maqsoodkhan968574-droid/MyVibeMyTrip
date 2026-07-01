@@ -10,6 +10,8 @@ export default function ContactPage() {
         eyebrow="Contact"
         title="Planning a trip, partnership, or pilot launch?"
         copy="Reach out for traveler onboarding, agency partnerships, destination expansion, or investor conversations."
+        image="/destinations/mirik-cover.png"
+        imageAlt="Peaceful hill destination for travel planning"
       />
       <section className="container-shell grid gap-10 py-16 lg:grid-cols-[0.85fr_1.15fr]">
         <div className="rounded-lg bg-navy p-6 text-white shadow-soft">

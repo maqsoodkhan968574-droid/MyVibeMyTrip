@@ -64,13 +64,13 @@ export default async function PackageDetailsPage({ params }: PackageDetailsPageP
             Back to packages
           </Link>
 
-          <div className="mt-8 max-w-4xl">
+          <div className="page-hero-copy mt-8 max-w-4xl">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-amber-200">
               <ShieldCheck size={15} />
               {trip.badge}
             </span>
-            <h1 className="mt-5 text-4xl font-black leading-tight sm:text-6xl">{trip.title}</h1>
-            <p className="mt-5 max-w-3xl text-base leading-7 text-slate-200 sm:text-lg sm:leading-8">{trip.overview}</p>
+            <h1 className="page-hero-title mt-5 text-4xl font-black leading-tight sm:text-6xl">{trip.title}</h1>
+            <p className="page-hero-subtitle mt-5 max-w-3xl text-base leading-7 text-slate-200 sm:text-lg sm:leading-8">{trip.overview}</p>
           </div>
         </div>
       </section>

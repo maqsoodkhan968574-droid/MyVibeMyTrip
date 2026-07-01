@@ -10,6 +10,8 @@ export default function AboutUsPage() {
         eyebrow="About us"
         title="A travel startup built around group chemistry."
         copy="MyVibeMyTrip.com exists because shared travel should feel social, safe, and enjoyable, not like a random compromise."
+        image="/hero/myvibemytrip-home-hero.png"
+        imageAlt="MyVibeMyTrip mountain travel vision"
       />
       <section className="container-shell py-16">
         <SectionHeading

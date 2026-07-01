@@ -10,6 +10,8 @@ export default function CompatibilityQuizPage() {
         eyebrow="Compatibility quiz"
         title="Discover your travel vibe and recommended group."
         copy="Answer a few practical questions about how you like to travel. The result shows a sample vibe score and group recommendations."
+        image="/hero/myvibemytrip-home-hero.png"
+        imageAlt="Compatibility-first mountain travel"
       />
       <section className="container-shell py-16">
         <SectionHeading title="Tell us what makes a trip feel right for you." copy="No backend is connected yet, so this frontend version calculates a sample result instantly and can be wired to an API later." />
