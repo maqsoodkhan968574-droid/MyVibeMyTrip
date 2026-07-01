@@ -13,33 +13,34 @@ import {
   Sparkles,
   UsersRound
 } from "lucide-react";
+import { AdminControlCenter } from "@/components/travel/admin-control-center";
 import { destinations, groupPackages, travelCategories } from "@/data/travel";
 
 const adminActions = [
   {
     title: "Package itineraries",
-    copy: "Edit day-wise package plans, inclusions, duration, and admin-ready itinerary JSON.",
+    copy: "Edit day-wise package plans, inclusions, duration, pricing, and admin-ready itinerary JSON.",
     href: "/admin/package-itineraries",
     icon: ClipboardList,
     status: "Editable now"
   },
   {
     title: "Public packages",
-    copy: "Review all customer-facing group packages and open each itinerary detail page.",
+    copy: "Review customer-facing group packages, payment buttons, and itinerary detail pages.",
     href: "/group-packages",
     icon: PackageCheck,
     status: "Public preview"
   },
   {
     title: "Destinations",
-    copy: "Check Phase 1 Sikkim and Darjeeling destination galleries and detail pages.",
+    copy: "Edit Phase 1 destination copy, galleries, highlights, tags, and detail pages.",
     href: "/destinations",
     icon: MapPin,
     status: "Photo library"
   },
   {
     title: "Compatibility quiz",
-    copy: "Preview the traveler matching quiz and sample vibe result shown to customers.",
+    copy: "Preview the traveler matching quiz and future traveler profile fields.",
     href: "/compatibility-quiz",
     icon: Sparkles,
     status: "Lead funnel"
@@ -53,7 +54,7 @@ const adminActions = [
   },
   {
     title: "Contact page",
-    copy: "Check customer contact forms, trust copy, and direct reach-out information.",
+    copy: "Check customer contact forms, trust copy, support, and direct reach-out information.",
     href: "/contact",
     icon: MessageCircle,
     status: "Support"
@@ -86,7 +87,7 @@ export default function AdminPage() {
               </p>
               <h1 className="mt-5 text-3xl font-black leading-tight sm:text-5xl">MyVibeMyTrip.com Admin</h1>
               <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-300 sm:text-base sm:leading-7">
-                Manage the compatibility-first travel website from one private control center. This page is protected by admin login and is not visible to normal users.
+                Manage packages, destinations, payments, booking tokens, galleries, compatibility content, and website operations from one private control center. This page is protected by admin login and is not visible to normal users.
               </p>
             </div>
             <Link href="/" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-amber-400 px-4 py-2 text-sm font-black text-navy transition hover:bg-amber-300">
@@ -104,6 +105,8 @@ export default function AdminPage() {
             </article>
           ))}
         </section>
+
+        <AdminControlCenter packages={groupPackages} destinations={destinations} />
 
         <section className="mt-8">
           <div className="mb-4 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
@@ -149,7 +152,7 @@ export default function AdminPage() {
               <div>
                 <h2 className="text-xl font-black text-navy">Admin editing roadmap</h2>
                 <p className="mt-2 text-sm leading-6 text-slate-600">
-                  Package itineraries are editable now as structured frontend data. Next backend step: connect this admin workspace to database/API save actions for live content updates.
+                  Admin modules are designed as editable frontend workspaces now. Next backend step: connect packages, destinations, payments, bookings, and media to database/API save actions for permanent live content updates.
                 </p>
               </div>
             </div>

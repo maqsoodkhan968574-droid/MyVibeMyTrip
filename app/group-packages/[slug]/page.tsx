@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, CalendarDays, CheckCircle2, MapPin, PencilLine, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowLeft, CalendarDays, CheckCircle2, Clock, IndianRupee, MapPin, ShieldCheck, Sparkles, Users } from "lucide-react";
 import { Footer } from "@/components/footer";
 import { PackagePaymentButton } from "@/components/travel/package-payment-button";
+import { TripTools } from "@/components/travel/trip-tools";
 import { groupPackages } from "@/data/travel";
 import { getPackageBySlug } from "@/utils/packages";
 
@@ -41,6 +42,13 @@ export default async function PackageDetailsPage({ params }: PackageDetailsPageP
   if (!trip) {
     notFound();
   }
+
+  const exclusions = ["Flights or train tickets", "Personal shopping and cafe bills", "Entry tickets unless confirmed", "Anything not listed in inclusions"];
+  const tripFit = [
+    { label: "Group vibe", value: trip.category, icon: Users },
+    { label: "Daily pace", value: trip.duration.includes("7") ? "Premium relaxed" : trip.category.includes("Adventure") || trip.category.includes("Gen Z") ? "High energy" : "Balanced", icon: Clock },
+    { label: "Token", value: "INR 1,100", icon: IndianRupee }
+  ];
 
   return (
     <main className="bg-slate-50">
@@ -83,19 +91,14 @@ export default async function PackageDetailsPage({ params }: PackageDetailsPageP
           ))}
         </div>
 
-        <div className="mt-6 rounded-lg border border-amber-200 bg-amber-50 p-4 sm:p-5">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <p className="text-xs font-black uppercase tracking-[0.16em] text-amber-700">Admin editable</p>
-              <p className="mt-1 text-sm font-semibold leading-6 text-slate-700">
-                This itinerary is stored as structured package data and can be edited from the admin itinerary workspace.
-              </p>
-            </div>
-            <Link href="/admin/package-itineraries" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-navy px-4 py-2 text-sm font-black text-white transition hover:bg-green-800">
-              <PencilLine size={16} />
-              Edit itinerary
-            </Link>
-          </div>
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          {tripFit.map((item) => (
+            <article key={item.label} className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+              <item.icon className="text-green-700" size={21} />
+              <p className="mt-3 text-xs font-black uppercase tracking-[0.16em] text-slate-500">{item.label}</p>
+              <p className="mt-1 text-sm font-black leading-6 text-navy">{item.value}</p>
+            </article>
+          ))}
         </div>
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[0.68fr_0.32fr]">
@@ -123,6 +126,11 @@ export default async function PackageDetailsPage({ params }: PackageDetailsPageP
                       <p className="mt-1">Meals: {day.meals}</p>
                     </div>
                   </div>
+                  <div className="mt-4 grid gap-2 rounded-lg bg-slate-50 p-3 text-xs font-bold leading-5 text-slate-600 sm:grid-cols-3">
+                    <p>Start: Morning plan</p>
+                    <p>Best for: {trip.category}</p>
+                    <p>Group matched plan</p>
+                  </div>
                   <div className="mt-4 grid gap-2">
                     {day.activities.map((activity) => (
                       <div key={activity} className="flex gap-2 rounded-lg border border-slate-100 p-3 text-sm font-semibold leading-6 text-slate-700">
@@ -136,26 +144,44 @@ export default async function PackageDetailsPage({ params }: PackageDetailsPageP
             </div>
           </section>
 
-          <aside className="h-fit rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-            <h2 className="text-xl font-black text-navy">Included in this package</h2>
-            <div className="mt-4 grid gap-3">
-              {trip.inclusions.map((item) => (
-                <div key={item} className="flex gap-2 text-sm font-semibold leading-6 text-slate-700">
-                  <CheckCircle2 className="mt-0.5 shrink-0 text-green-700" size={17} />
-                  {item}
+          <aside className="grid h-fit gap-4">
+            <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+              <h2 className="text-xl font-black text-navy">Included in this package</h2>
+              <div className="mt-4 grid gap-3">
+                {trip.inclusions.map((item) => (
+                  <div key={item} className="flex gap-2 text-sm font-semibold leading-6 text-slate-700">
+                    <CheckCircle2 className="mt-0.5 shrink-0 text-green-700" size={17} />
+                    {item}
+                  </div>
+                ))}
+              </div>
+              <div className="mt-5 border-t border-slate-100 pt-5">
+                <h3 className="text-sm font-black uppercase tracking-[0.14em] text-slate-500">Not included</h3>
+                <div className="mt-3 grid gap-2">
+                  {exclusions.map((item) => (
+                    <p key={item} className="text-sm font-semibold leading-6 text-slate-600">{item}</p>
+                  ))}
                 </div>
-              ))}
-            </div>
-            <div className="mt-6 rounded-lg border border-amber-200 bg-amber-50 p-4">
-              <p className="text-xs font-black uppercase tracking-[0.16em] text-amber-700">Secure booking token</p>
-              <p className="mt-2 text-sm font-semibold leading-6 text-slate-700">
-                Pay INR 1,100 through Razorpay to reserve your matching request. Final package confirmation happens after vibe and group availability checks.
-              </p>
-            </div>
-            <PackagePaymentButton className="mt-4" packageSlug={trip.slug} packageTitle={trip.title} />
-            <Link href="/compatibility-quiz" className="mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-lg bg-amber-400 px-5 py-3 text-sm font-black text-navy transition hover:bg-amber-300">
-              Check My Compatibility
-            </Link>
+              </div>
+              <div className="mt-6 rounded-lg border border-amber-200 bg-amber-50 p-4">
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-amber-700">Secure booking token</p>
+                <p className="mt-2 text-sm font-semibold leading-6 text-slate-700">
+                  Pay INR 1,100 through Razorpay to reserve your matching request. Final package confirmation happens after vibe and group availability checks.
+                </p>
+              </div>
+              <PackagePaymentButton className="mt-4" packageSlug={trip.slug} packageTitle={trip.title} />
+              <Link href="/compatibility-quiz" className="mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-lg bg-amber-400 px-5 py-3 text-sm font-black text-navy transition hover:bg-amber-300">
+                Check My Compatibility
+              </Link>
+            </article>
+
+            <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+              <h2 className="text-xl font-black text-navy">Traveler tools</h2>
+              <div className="mt-4">
+                <TripTools title={trip.title} slug={trip.slug} />
+              </div>
+              <p className="mt-3 text-xs font-semibold leading-5 text-slate-500">Save this trip on this device or share the itinerary link before booking.</p>
+            </article>
           </aside>
         </div>
       </section>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Camera, CheckCircle2, MapPin, Sparkles } from "lucide-react";
+import { ArrowLeft, Camera, CheckCircle2, CloudSun, IndianRupee, MapPin, Route, ShieldCheck, Sparkles, Wifi } from "lucide-react";
 import { Footer } from "@/components/footer";
 import { destinations } from "@/data/travel";
 import { destinationSlug, getDestinationBySlug } from "@/utils/destinations";
@@ -44,6 +44,22 @@ export default async function DestinationDetailsPage({ params }: DestinationDeta
   }
 
   const galleryImages = destination.galleryImages ?? [];
+  const isHighAltitude = destination.tags.some((tag) => ["Snow", "High altitude", "Adventure", "Long drive"].includes(tag));
+  const isDarjeeling = destination.region === "Darjeeling";
+  const quickFacts = [
+    { label: "Best season", value: isHighAltitude ? "Mar-Jun, Oct-Dec" : isDarjeeling ? "Mar-May, Oct-Nov" : "Mar-Jun, Sep-Dec", icon: CloudSun },
+    { label: "Trip style", value: destination.bestFor[0] ?? "Matched groups", icon: Sparkles },
+    { label: "Difficulty", value: isHighAltitude ? "Moderate to high" : "Easy to moderate", icon: Route },
+    { label: "Budget range", value: isHighAltitude ? "INR 18k-32k" : "INR 12k-26k", icon: IndianRupee },
+    { label: "Safety note", value: isHighAltitude ? "Permit and weather based" : "Verified local partners", icon: ShieldCheck },
+    { label: "Network", value: isHighAltitude ? "Limited on route" : "Good in town areas", icon: Wifi }
+  ];
+  const vibeScores = [
+    { label: "Photography", value: destination.tags.includes("Photos") || destination.bestFor.join(" ").includes("Photo") ? 95 : 88 },
+    { label: "Adventure", value: isHighAltitude ? 94 : destination.tags.includes("Calm") || destination.tags.includes("Relaxed") ? 62 : 78 },
+    { label: "Family", value: destination.bestFor.includes("Families") ? 92 : 70 },
+    { label: "Couples", value: destination.bestFor.includes("Couples") ? 91 : 74 }
+  ];
 
   return (
     <main className="bg-slate-50">
@@ -69,12 +85,30 @@ export default async function DestinationDetailsPage({ params }: DestinationDeta
         </div>
       </section>
 
+      <section className="container-shell -mt-6 relative z-10">
+        <div className="grid gap-3 rounded-lg border border-slate-200 bg-white p-3 shadow-xl shadow-slate-900/10 sm:grid-cols-2 lg:grid-cols-6">
+          {quickFacts.map((fact) => (
+            <article key={fact.label} className="rounded-lg bg-slate-50 p-4">
+              <fact.icon className="text-green-700" size={19} />
+              <p className="mt-3 text-[11px] font-black uppercase tracking-[0.14em] text-slate-500">{fact.label}</p>
+              <p className="mt-1 text-sm font-black leading-5 text-navy">{fact.value}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="container-shell py-10 sm:py-14">
         <div className="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
           <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-7">
             <p className="eyebrow">Place details</p>
             <h2 className="mt-2 text-2xl font-black text-navy sm:text-3xl">Why this destination fits vibe-matched travel</h2>
             <p className="mt-4 leading-7 text-slate-700">{destination.description}</p>
+            <div className="mt-5 rounded-lg border border-green-100 bg-green-50 p-4">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-green-800">AI trip fit summary</p>
+              <p className="mt-2 text-sm font-semibold leading-6 text-slate-700">
+                Best for {destination.bestFor.slice(0, 3).join(", ").toLowerCase()}. Avoid this plan if your group wants a completely different pace, privacy level, or wake-up routine.
+              </p>
+            </div>
             <div className="mt-5 flex flex-wrap gap-2">
               {destination.tags.map((tag) => (
                 <span key={tag} className="rounded-full bg-green-50 px-3 py-1 text-xs font-black text-green-800">
@@ -91,6 +125,19 @@ export default async function DestinationDetailsPage({ params }: DestinationDeta
                 <div key={item} className="flex items-start gap-2 rounded-lg bg-slate-50 p-3 text-sm font-bold text-slate-700">
                   <Sparkles className="mt-0.5 shrink-0 text-amber-500" size={16} />
                   {item}
+                </div>
+              ))}
+            </div>
+            <div className="mt-5 grid gap-3 sm:grid-cols-2">
+              {vibeScores.map((score) => (
+                <div key={score.label}>
+                  <div className="flex items-center justify-between text-xs font-black uppercase tracking-[0.12em] text-slate-500">
+                    <span>{score.label}</span>
+                    <span>{score.value}%</span>
+                  </div>
+                  <div className="mt-2 h-2 overflow-hidden rounded-full bg-slate-100">
+                    <div className="h-full rounded-full bg-gradient-to-r from-green-700 to-amber-400" style={{ width: `${score.value}%` }} />
+                  </div>
                 </div>
               ))}
             </div>
@@ -118,6 +165,36 @@ export default async function DestinationDetailsPage({ params }: DestinationDeta
                   {tip}
                 </div>
               ))}
+            </div>
+          </article>
+        </div>
+
+        <div className="mt-5 grid gap-5 lg:grid-cols-3">
+          <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-7">
+            <h2 className="text-xl font-black text-navy">Best time to go</h2>
+            <div className="mt-4 grid gap-3 text-sm font-semibold leading-6 text-slate-700">
+              <p><span className="font-black text-green-800">Peak:</span> March to June for clear hill weather and easy sightseeing.</p>
+              <p><span className="font-black text-amber-700">Scenic:</span> October to December for crisp views and stronger mountain light.</p>
+              <p><span className="font-black text-slate-900">Plan smart:</span> Monsoon routes can be beautiful but slower, so match patient travelers together.</p>
+            </div>
+          </article>
+
+          <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-7">
+            <h2 className="text-xl font-black text-navy">Local experience picks</h2>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {["Photo stops", "Cafe break", "Local food", "Viewpoint time", "Slow evening"].map((item) => (
+                <span key={item} className="rounded-full bg-slate-100 px-3 py-2 text-xs font-black text-slate-700">{item}</span>
+              ))}
+            </div>
+          </article>
+
+          <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-7">
+            <h2 className="text-xl font-black text-navy">Before you book</h2>
+            <div className="mt-4 grid gap-3 text-sm font-semibold leading-6 text-slate-700">
+              <p>Confirm permits, road condition, hotel category, pickup point, and group age mix before final payment.</p>
+              <Link href="/compatibility-quiz" className="inline-flex min-h-11 w-fit items-center justify-center rounded-lg bg-navy px-4 py-2 text-sm font-black text-white transition hover:bg-green-800">
+                Check my vibe match
+              </Link>
             </div>
           </article>
         </div>
